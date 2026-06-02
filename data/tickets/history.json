@@ -1,0 +1,842 @@
+[
+  {
+    "ticket_id": "TKT-1001",
+    "title": "SSO callback mismatch",
+    "description": "SAML ACS URL misconfigured in IdP. Case #1",
+    "status": "closed",
+    "product": "billing",
+    "created_at": "2025-12-02T00:00:00Z",
+    "tags": [
+      "billing",
+      "support",
+      "question"
+    ],
+    "resolution": "Update IdP ACS URL and clear stale browser cookies."
+  },
+  {
+    "ticket_id": "TKT-1002",
+    "title": "429 burst on public API",
+    "description": "Client sent high-frequency polling requests. Case #2",
+    "status": "resolved",
+    "product": "api",
+    "created_at": "2025-12-03T00:00:00Z",
+    "tags": [
+      "api",
+      "support",
+      "question"
+    ],
+    "resolution": "Use webhook alternative and exponential backoff."
+  },
+  {
+    "ticket_id": "TKT-1003",
+    "title": "Webhook endpoint timeout",
+    "description": "Receiver processing exceeded 5s timeout. Case #3",
+    "status": "resolved",
+    "product": "integration",
+    "created_at": "2025-12-04T00:00:00Z",
+    "tags": [
+      "integration",
+      "support",
+      "question"
+    ],
+    "resolution": "Move processing to async queue and return 2xx quickly."
+  },
+  {
+    "ticket_id": "TKT-1004",
+    "title": "Dashboard loading slowly",
+    "description": "Query lacked date filter and index hit. Case #4",
+    "status": "closed",
+    "product": "analytics",
+    "created_at": "2025-12-05T00:00:00Z",
+    "tags": [
+      "analytics",
+      "support",
+      "question"
+    ],
+    "resolution": "Apply default 30-day filter and add DB index."
+  },
+  {
+    "ticket_id": "TKT-1005",
+    "title": "Password reset mail not received",
+    "description": "SMTP sender domain missing SPF record. Case #5",
+    "status": "resolved",
+    "product": "auth",
+    "created_at": "2025-12-06T00:00:00Z",
+    "tags": [
+      "auth",
+      "support",
+      "question"
+    ],
+    "resolution": "Add SPF and DKIM records, then re-verify sender."
+  },
+  {
+    "ticket_id": "TKT-1006",
+    "title": "SSO callback mismatch",
+    "description": "SAML ACS URL misconfigured in IdP. Case #6",
+    "status": "closed",
+    "product": "billing",
+    "created_at": "2025-12-07T00:00:00Z",
+    "tags": [
+      "billing",
+      "support",
+      "question"
+    ],
+    "resolution": "Update IdP ACS URL and clear stale browser cookies."
+  },
+  {
+    "ticket_id": "TKT-1007",
+    "title": "429 burst on public API",
+    "description": "Client sent high-frequency polling requests. Case #7",
+    "status": "resolved",
+    "product": "api",
+    "created_at": "2025-12-08T00:00:00Z",
+    "tags": [
+      "api",
+      "support",
+      "incident"
+    ],
+    "resolution": "Use webhook alternative and exponential backoff."
+  },
+  {
+    "ticket_id": "TKT-1008",
+    "title": "Webhook endpoint timeout",
+    "description": "Receiver processing exceeded 5s timeout. Case #8",
+    "status": "resolved",
+    "product": "integration",
+    "created_at": "2025-12-09T00:00:00Z",
+    "tags": [
+      "integration",
+      "support",
+      "question"
+    ],
+    "resolution": "Move processing to async queue and return 2xx quickly."
+  },
+  {
+    "ticket_id": "TKT-1009",
+    "title": "Dashboard loading slowly",
+    "description": "Query lacked date filter and index hit. Case #9",
+    "status": "closed",
+    "product": "analytics",
+    "created_at": "2025-12-10T00:00:00Z",
+    "tags": [
+      "analytics",
+      "support",
+      "question"
+    ],
+    "resolution": "Apply default 30-day filter and add DB index."
+  },
+  {
+    "ticket_id": "TKT-1010",
+    "title": "Password reset mail not received",
+    "description": "SMTP sender domain missing SPF record. Case #10",
+    "status": "resolved",
+    "product": "auth",
+    "created_at": "2025-12-11T00:00:00Z",
+    "tags": [
+      "auth",
+      "support",
+      "question"
+    ],
+    "resolution": "Add SPF and DKIM records, then re-verify sender."
+  },
+  {
+    "ticket_id": "TKT-1011",
+    "title": "SSO callback mismatch",
+    "description": "SAML ACS URL misconfigured in IdP. Case #11",
+    "status": "closed",
+    "product": "billing",
+    "created_at": "2025-12-12T00:00:00Z",
+    "tags": [
+      "billing",
+      "support",
+      "question"
+    ],
+    "resolution": "Update IdP ACS URL and clear stale browser cookies."
+  },
+  {
+    "ticket_id": "TKT-1012",
+    "title": "429 burst on public API",
+    "description": "Client sent high-frequency polling requests. Case #12",
+    "status": "resolved",
+    "product": "api",
+    "created_at": "2025-12-13T00:00:00Z",
+    "tags": [
+      "api",
+      "support",
+      "question"
+    ],
+    "resolution": "Use webhook alternative and exponential backoff."
+  },
+  {
+    "ticket_id": "TKT-1013",
+    "title": "Webhook endpoint timeout",
+    "description": "Receiver processing exceeded 5s timeout. Case #13",
+    "status": "resolved",
+    "product": "integration",
+    "created_at": "2025-12-14T00:00:00Z",
+    "tags": [
+      "integration",
+      "support",
+      "question"
+    ],
+    "resolution": "Move processing to async queue and return 2xx quickly."
+  },
+  {
+    "ticket_id": "TKT-1014",
+    "title": "Dashboard loading slowly",
+    "description": "Query lacked date filter and index hit. Case #14",
+    "status": "closed",
+    "product": "analytics",
+    "created_at": "2025-12-15T00:00:00Z",
+    "tags": [
+      "analytics",
+      "support",
+      "incident"
+    ],
+    "resolution": "Apply default 30-day filter and add DB index."
+  },
+  {
+    "ticket_id": "TKT-1015",
+    "title": "Password reset mail not received",
+    "description": "SMTP sender domain missing SPF record. Case #15",
+    "status": "resolved",
+    "product": "auth",
+    "created_at": "2025-12-16T00:00:00Z",
+    "tags": [
+      "auth",
+      "support",
+      "question"
+    ],
+    "resolution": "Add SPF and DKIM records, then re-verify sender."
+  },
+  {
+    "ticket_id": "TKT-1016",
+    "title": "SSO callback mismatch",
+    "description": "SAML ACS URL misconfigured in IdP. Case #16",
+    "status": "closed",
+    "product": "billing",
+    "created_at": "2025-12-17T00:00:00Z",
+    "tags": [
+      "billing",
+      "support",
+      "question"
+    ],
+    "resolution": "Update IdP ACS URL and clear stale browser cookies."
+  },
+  {
+    "ticket_id": "TKT-1017",
+    "title": "429 burst on public API",
+    "description": "Client sent high-frequency polling requests. Case #17",
+    "status": "resolved",
+    "product": "api",
+    "created_at": "2025-12-18T00:00:00Z",
+    "tags": [
+      "api",
+      "support",
+      "question"
+    ],
+    "resolution": "Use webhook alternative and exponential backoff."
+  },
+  {
+    "ticket_id": "TKT-1018",
+    "title": "Webhook endpoint timeout",
+    "description": "Receiver processing exceeded 5s timeout. Case #18",
+    "status": "resolved",
+    "product": "integration",
+    "created_at": "2025-12-19T00:00:00Z",
+    "tags": [
+      "integration",
+      "support",
+      "question"
+    ],
+    "resolution": "Move processing to async queue and return 2xx quickly."
+  },
+  {
+    "ticket_id": "TKT-1019",
+    "title": "Dashboard loading slowly",
+    "description": "Query lacked date filter and index hit. Case #19",
+    "status": "closed",
+    "product": "analytics",
+    "created_at": "2025-12-20T00:00:00Z",
+    "tags": [
+      "analytics",
+      "support",
+      "question"
+    ],
+    "resolution": "Apply default 30-day filter and add DB index."
+  },
+  {
+    "ticket_id": "TKT-1020",
+    "title": "Password reset mail not received",
+    "description": "SMTP sender domain missing SPF record. Case #20",
+    "status": "resolved",
+    "product": "auth",
+    "created_at": "2025-12-21T00:00:00Z",
+    "tags": [
+      "auth",
+      "support",
+      "question"
+    ],
+    "resolution": "Add SPF and DKIM records, then re-verify sender."
+  },
+  {
+    "ticket_id": "TKT-1021",
+    "title": "SSO callback mismatch",
+    "description": "SAML ACS URL misconfigured in IdP. Case #21",
+    "status": "closed",
+    "product": "billing",
+    "created_at": "2025-12-22T00:00:00Z",
+    "tags": [
+      "billing",
+      "support",
+      "incident"
+    ],
+    "resolution": "Update IdP ACS URL and clear stale browser cookies."
+  },
+  {
+    "ticket_id": "TKT-1022",
+    "title": "429 burst on public API",
+    "description": "Client sent high-frequency polling requests. Case #22",
+    "status": "resolved",
+    "product": "api",
+    "created_at": "2025-12-23T00:00:00Z",
+    "tags": [
+      "api",
+      "support",
+      "question"
+    ],
+    "resolution": "Use webhook alternative and exponential backoff."
+  },
+  {
+    "ticket_id": "TKT-1023",
+    "title": "Webhook endpoint timeout",
+    "description": "Receiver processing exceeded 5s timeout. Case #23",
+    "status": "resolved",
+    "product": "integration",
+    "created_at": "2025-12-24T00:00:00Z",
+    "tags": [
+      "integration",
+      "support",
+      "question"
+    ],
+    "resolution": "Move processing to async queue and return 2xx quickly."
+  },
+  {
+    "ticket_id": "TKT-1024",
+    "title": "Dashboard loading slowly",
+    "description": "Query lacked date filter and index hit. Case #24",
+    "status": "closed",
+    "product": "analytics",
+    "created_at": "2025-12-25T00:00:00Z",
+    "tags": [
+      "analytics",
+      "support",
+      "question"
+    ],
+    "resolution": "Apply default 30-day filter and add DB index."
+  },
+  {
+    "ticket_id": "TKT-1025",
+    "title": "Password reset mail not received",
+    "description": "SMTP sender domain missing SPF record. Case #25",
+    "status": "resolved",
+    "product": "auth",
+    "created_at": "2025-12-26T00:00:00Z",
+    "tags": [
+      "auth",
+      "support",
+      "question"
+    ],
+    "resolution": "Add SPF and DKIM records, then re-verify sender."
+  },
+  {
+    "ticket_id": "TKT-1026",
+    "title": "SSO callback mismatch",
+    "description": "SAML ACS URL misconfigured in IdP. Case #26",
+    "status": "closed",
+    "product": "billing",
+    "created_at": "2025-12-27T00:00:00Z",
+    "tags": [
+      "billing",
+      "support",
+      "question"
+    ],
+    "resolution": "Update IdP ACS URL and clear stale browser cookies."
+  },
+  {
+    "ticket_id": "TKT-1027",
+    "title": "429 burst on public API",
+    "description": "Client sent high-frequency polling requests. Case #27",
+    "status": "resolved",
+    "product": "api",
+    "created_at": "2025-12-28T00:00:00Z",
+    "tags": [
+      "api",
+      "support",
+      "question"
+    ],
+    "resolution": "Use webhook alternative and exponential backoff."
+  },
+  {
+    "ticket_id": "TKT-1028",
+    "title": "Webhook endpoint timeout",
+    "description": "Receiver processing exceeded 5s timeout. Case #28",
+    "status": "resolved",
+    "product": "integration",
+    "created_at": "2025-12-29T00:00:00Z",
+    "tags": [
+      "integration",
+      "support",
+      "incident"
+    ],
+    "resolution": "Move processing to async queue and return 2xx quickly."
+  },
+  {
+    "ticket_id": "TKT-1029",
+    "title": "Dashboard loading slowly",
+    "description": "Query lacked date filter and index hit. Case #29",
+    "status": "closed",
+    "product": "analytics",
+    "created_at": "2025-12-30T00:00:00Z",
+    "tags": [
+      "analytics",
+      "support",
+      "question"
+    ],
+    "resolution": "Apply default 30-day filter and add DB index."
+  },
+  {
+    "ticket_id": "TKT-1030",
+    "title": "Password reset mail not received",
+    "description": "SMTP sender domain missing SPF record. Case #30",
+    "status": "resolved",
+    "product": "auth",
+    "created_at": "2025-12-31T00:00:00Z",
+    "tags": [
+      "auth",
+      "support",
+      "question"
+    ],
+    "resolution": "Add SPF and DKIM records, then re-verify sender."
+  },
+  {
+    "ticket_id": "TKT-1031",
+    "title": "SSO callback mismatch",
+    "description": "SAML ACS URL misconfigured in IdP. Case #31",
+    "status": "closed",
+    "product": "billing",
+    "created_at": "2026-01-01T00:00:00Z",
+    "tags": [
+      "billing",
+      "support",
+      "question"
+    ],
+    "resolution": "Update IdP ACS URL and clear stale browser cookies."
+  },
+  {
+    "ticket_id": "TKT-1032",
+    "title": "429 burst on public API",
+    "description": "Client sent high-frequency polling requests. Case #32",
+    "status": "resolved",
+    "product": "api",
+    "created_at": "2026-01-02T00:00:00Z",
+    "tags": [
+      "api",
+      "support",
+      "question"
+    ],
+    "resolution": "Use webhook alternative and exponential backoff."
+  },
+  {
+    "ticket_id": "TKT-1033",
+    "title": "Webhook endpoint timeout",
+    "description": "Receiver processing exceeded 5s timeout. Case #33",
+    "status": "resolved",
+    "product": "integration",
+    "created_at": "2026-01-03T00:00:00Z",
+    "tags": [
+      "integration",
+      "support",
+      "question"
+    ],
+    "resolution": "Move processing to async queue and return 2xx quickly."
+  },
+  {
+    "ticket_id": "TKT-1034",
+    "title": "Dashboard loading slowly",
+    "description": "Query lacked date filter and index hit. Case #34",
+    "status": "closed",
+    "product": "analytics",
+    "created_at": "2026-01-04T00:00:00Z",
+    "tags": [
+      "analytics",
+      "support",
+      "question"
+    ],
+    "resolution": "Apply default 30-day filter and add DB index."
+  },
+  {
+    "ticket_id": "TKT-1035",
+    "title": "Password reset mail not received",
+    "description": "SMTP sender domain missing SPF record. Case #35",
+    "status": "resolved",
+    "product": "auth",
+    "created_at": "2026-01-05T00:00:00Z",
+    "tags": [
+      "auth",
+      "support",
+      "incident"
+    ],
+    "resolution": "Add SPF and DKIM records, then re-verify sender."
+  },
+  {
+    "ticket_id": "TKT-1036",
+    "title": "SSO callback mismatch",
+    "description": "SAML ACS URL misconfigured in IdP. Case #36",
+    "status": "closed",
+    "product": "billing",
+    "created_at": "2026-01-06T00:00:00Z",
+    "tags": [
+      "billing",
+      "support",
+      "question"
+    ],
+    "resolution": "Update IdP ACS URL and clear stale browser cookies."
+  },
+  {
+    "ticket_id": "TKT-1037",
+    "title": "429 burst on public API",
+    "description": "Client sent high-frequency polling requests. Case #37",
+    "status": "resolved",
+    "product": "api",
+    "created_at": "2026-01-07T00:00:00Z",
+    "tags": [
+      "api",
+      "support",
+      "question"
+    ],
+    "resolution": "Use webhook alternative and exponential backoff."
+  },
+  {
+    "ticket_id": "TKT-1038",
+    "title": "Webhook endpoint timeout",
+    "description": "Receiver processing exceeded 5s timeout. Case #38",
+    "status": "resolved",
+    "product": "integration",
+    "created_at": "2026-01-08T00:00:00Z",
+    "tags": [
+      "integration",
+      "support",
+      "question"
+    ],
+    "resolution": "Move processing to async queue and return 2xx quickly."
+  },
+  {
+    "ticket_id": "TKT-1039",
+    "title": "Dashboard loading slowly",
+    "description": "Query lacked date filter and index hit. Case #39",
+    "status": "closed",
+    "product": "analytics",
+    "created_at": "2026-01-09T00:00:00Z",
+    "tags": [
+      "analytics",
+      "support",
+      "question"
+    ],
+    "resolution": "Apply default 30-day filter and add DB index."
+  },
+  {
+    "ticket_id": "TKT-1040",
+    "title": "Password reset mail not received",
+    "description": "SMTP sender domain missing SPF record. Case #40",
+    "status": "resolved",
+    "product": "auth",
+    "created_at": "2026-01-10T00:00:00Z",
+    "tags": [
+      "auth",
+      "support",
+      "question"
+    ],
+    "resolution": "Add SPF and DKIM records, then re-verify sender."
+  },
+  {
+    "ticket_id": "TKT-1041",
+    "title": "SSO callback mismatch",
+    "description": "SAML ACS URL misconfigured in IdP. Case #41",
+    "status": "closed",
+    "product": "billing",
+    "created_at": "2026-01-11T00:00:00Z",
+    "tags": [
+      "billing",
+      "support",
+      "question"
+    ],
+    "resolution": "Update IdP ACS URL and clear stale browser cookies."
+  },
+  {
+    "ticket_id": "TKT-1042",
+    "title": "429 burst on public API",
+    "description": "Client sent high-frequency polling requests. Case #42",
+    "status": "resolved",
+    "product": "api",
+    "created_at": "2026-01-12T00:00:00Z",
+    "tags": [
+      "api",
+      "support",
+      "incident"
+    ],
+    "resolution": "Use webhook alternative and exponential backoff."
+  },
+  {
+    "ticket_id": "TKT-1043",
+    "title": "Webhook endpoint timeout",
+    "description": "Receiver processing exceeded 5s timeout. Case #43",
+    "status": "resolved",
+    "product": "integration",
+    "created_at": "2026-01-13T00:00:00Z",
+    "tags": [
+      "integration",
+      "support",
+      "question"
+    ],
+    "resolution": "Move processing to async queue and return 2xx quickly."
+  },
+  {
+    "ticket_id": "TKT-1044",
+    "title": "Dashboard loading slowly",
+    "description": "Query lacked date filter and index hit. Case #44",
+    "status": "closed",
+    "product": "analytics",
+    "created_at": "2026-01-14T00:00:00Z",
+    "tags": [
+      "analytics",
+      "support",
+      "question"
+    ],
+    "resolution": "Apply default 30-day filter and add DB index."
+  },
+  {
+    "ticket_id": "TKT-1045",
+    "title": "Password reset mail not received",
+    "description": "SMTP sender domain missing SPF record. Case #45",
+    "status": "resolved",
+    "product": "auth",
+    "created_at": "2026-01-15T00:00:00Z",
+    "tags": [
+      "auth",
+      "support",
+      "question"
+    ],
+    "resolution": "Add SPF and DKIM records, then re-verify sender."
+  },
+  {
+    "ticket_id": "TKT-1046",
+    "title": "SSO callback mismatch",
+    "description": "SAML ACS URL misconfigured in IdP. Case #46",
+    "status": "closed",
+    "product": "billing",
+    "created_at": "2026-01-16T00:00:00Z",
+    "tags": [
+      "billing",
+      "support",
+      "question"
+    ],
+    "resolution": "Update IdP ACS URL and clear stale browser cookies."
+  },
+  {
+    "ticket_id": "TKT-1047",
+    "title": "429 burst on public API",
+    "description": "Client sent high-frequency polling requests. Case #47",
+    "status": "resolved",
+    "product": "api",
+    "created_at": "2026-01-17T00:00:00Z",
+    "tags": [
+      "api",
+      "support",
+      "question"
+    ],
+    "resolution": "Use webhook alternative and exponential backoff."
+  },
+  {
+    "ticket_id": "TKT-1048",
+    "title": "Webhook endpoint timeout",
+    "description": "Receiver processing exceeded 5s timeout. Case #48",
+    "status": "resolved",
+    "product": "integration",
+    "created_at": "2026-01-18T00:00:00Z",
+    "tags": [
+      "integration",
+      "support",
+      "question"
+    ],
+    "resolution": "Move processing to async queue and return 2xx quickly."
+  },
+  {
+    "ticket_id": "TKT-1049",
+    "title": "Dashboard loading slowly",
+    "description": "Query lacked date filter and index hit. Case #49",
+    "status": "closed",
+    "product": "analytics",
+    "created_at": "2026-01-19T00:00:00Z",
+    "tags": [
+      "analytics",
+      "support",
+      "incident"
+    ],
+    "resolution": "Apply default 30-day filter and add DB index."
+  },
+  {
+    "ticket_id": "TKT-1050",
+    "title": "Password reset mail not received",
+    "description": "SMTP sender domain missing SPF record. Case #50",
+    "status": "resolved",
+    "product": "auth",
+    "created_at": "2026-01-20T00:00:00Z",
+    "tags": [
+      "auth",
+      "support",
+      "question"
+    ],
+    "resolution": "Add SPF and DKIM records, then re-verify sender."
+  },
+  {
+    "ticket_id": "TKT-1051",
+    "title": "SSO callback mismatch",
+    "description": "SAML ACS URL misconfigured in IdP. Case #51",
+    "status": "closed",
+    "product": "billing",
+    "created_at": "2026-01-21T00:00:00Z",
+    "tags": [
+      "billing",
+      "support",
+      "question"
+    ],
+    "resolution": "Update IdP ACS URL and clear stale browser cookies."
+  },
+  {
+    "ticket_id": "TKT-1052",
+    "title": "429 burst on public API",
+    "description": "Client sent high-frequency polling requests. Case #52",
+    "status": "resolved",
+    "product": "api",
+    "created_at": "2026-01-22T00:00:00Z",
+    "tags": [
+      "api",
+      "support",
+      "question"
+    ],
+    "resolution": "Use webhook alternative and exponential backoff."
+  },
+  {
+    "ticket_id": "TKT-1053",
+    "title": "Webhook endpoint timeout",
+    "description": "Receiver processing exceeded 5s timeout. Case #53",
+    "status": "resolved",
+    "product": "integration",
+    "created_at": "2026-01-23T00:00:00Z",
+    "tags": [
+      "integration",
+      "support",
+      "question"
+    ],
+    "resolution": "Move processing to async queue and return 2xx quickly."
+  },
+  {
+    "ticket_id": "TKT-1054",
+    "title": "Dashboard loading slowly",
+    "description": "Query lacked date filter and index hit. Case #54",
+    "status": "closed",
+    "product": "analytics",
+    "created_at": "2026-01-24T00:00:00Z",
+    "tags": [
+      "analytics",
+      "support",
+      "question"
+    ],
+    "resolution": "Apply default 30-day filter and add DB index."
+  },
+  {
+    "ticket_id": "TKT-1055",
+    "title": "Password reset mail not received",
+    "description": "SMTP sender domain missing SPF record. Case #55",
+    "status": "resolved",
+    "product": "auth",
+    "created_at": "2026-01-25T00:00:00Z",
+    "tags": [
+      "auth",
+      "support",
+      "question"
+    ],
+    "resolution": "Add SPF and DKIM records, then re-verify sender."
+  },
+  {
+    "ticket_id": "TKT-1056",
+    "title": "SSO callback mismatch",
+    "description": "SAML ACS URL misconfigured in IdP. Case #56",
+    "status": "closed",
+    "product": "billing",
+    "created_at": "2026-01-26T00:00:00Z",
+    "tags": [
+      "billing",
+      "support",
+      "incident"
+    ],
+    "resolution": "Update IdP ACS URL and clear stale browser cookies."
+  },
+  {
+    "ticket_id": "TKT-1057",
+    "title": "429 burst on public API",
+    "description": "Client sent high-frequency polling requests. Case #57",
+    "status": "resolved",
+    "product": "api",
+    "created_at": "2026-01-27T00:00:00Z",
+    "tags": [
+      "api",
+      "support",
+      "question"
+    ],
+    "resolution": "Use webhook alternative and exponential backoff."
+  },
+  {
+    "ticket_id": "TKT-1058",
+    "title": "Webhook endpoint timeout",
+    "description": "Receiver processing exceeded 5s timeout. Case #58",
+    "status": "resolved",
+    "product": "integration",
+    "created_at": "2026-01-28T00:00:00Z",
+    "tags": [
+      "integration",
+      "support",
+      "question"
+    ],
+    "resolution": "Move processing to async queue and return 2xx quickly."
+  },
+  {
+    "ticket_id": "TKT-1059",
+    "title": "Dashboard loading slowly",
+    "description": "Query lacked date filter and index hit. Case #59",
+    "status": "closed",
+    "product": "analytics",
+    "created_at": "2026-01-29T00:00:00Z",
+    "tags": [
+      "analytics",
+      "support",
+      "question"
+    ],
+    "resolution": "Apply default 30-day filter and add DB index."
+  },
+  {
+    "ticket_id": "TKT-1060",
+    "title": "Password reset mail not received",
+    "description": "SMTP sender domain missing SPF record. Case #60",
+    "status": "resolved",
+    "product": "auth",
+    "created_at": "2026-01-30T00:00:00Z",
+    "tags": [
+      "auth",
+      "support",
+      "question"
+    ],
+    "resolution": "Add SPF and DKIM records, then re-verify sender."
+  }
+]
