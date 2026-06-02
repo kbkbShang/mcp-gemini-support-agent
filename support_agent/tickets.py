@@ -32,15 +32,18 @@ class TicketStore:
         path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
     def search_tickets(self, query: str, top_k: int = 5) -> list[dict]:
-        tickets = self._read_json(TICKETS_FILE)
         q = _tokenize(query)
+        if not q:
+            return []
+
+        tickets = self._read_json(TICKETS_FILE)
         scored = []
         for ticket in tickets:
             text = f"{ticket.get('title', '')} {ticket.get('description', '')} {' '.join(ticket.get('tags', []))}"
             tks = _tokenize(text)
             overlap = len(q & tks)
-            score = overlap / (len(q) + 1)
-            if score > 0:
+            score = overlap / max(len(q), len(tks), 1)
+            if overlap > 0:
                 scored.append((score, ticket))
         scored.sort(key=lambda x: x[0], reverse=True)
         out = []

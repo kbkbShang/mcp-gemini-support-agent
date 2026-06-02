@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T06:07:15.140088+00:00",
+  "generated_at": "2026-06-02T06:08:44.305284+00:00",
   "total": 20,
   "passed": 16,
   "pass_rate": 0.8,
@@ -21,9 +21,9 @@
       "query": "SSO 登录一直循环跳转如何处理？",
       "expected": "SSO Login Loop",
       "top_kb_titles": [
-        "Incident Escalation Policy",
-        "Mobile Push Notification Issues",
-        "SSO Login Loop"
+        "SSO Login Loop",
+        "Password Reset Troubleshooting",
+        "API Rate Limit Exceeded"
       ],
       "confidence": 0.2,
       "pass": true
@@ -33,11 +33,11 @@
       "query": "API 返回 429 如何解决？",
       "expected": "API Rate Limit Exceeded",
       "top_kb_titles": [
+        "Slow Dashboard Performance",
         "API Rate Limit Exceeded",
-        "RBAC Permission Denied",
         "SSO Login Loop"
       ],
-      "confidence": 0.25,
+      "confidence": 0.27,
       "pass": true
     },
     {
@@ -49,7 +49,7 @@
         "SSO Login Loop",
         "Password Reset Troubleshooting"
       ],
-      "confidence": 0.35,
+      "confidence": 0.37,
       "pass": true
     },
     {
@@ -81,11 +81,11 @@
       "query": "RBAC 权限拒绝",
       "expected": "RBAC Permission Denied",
       "top_kb_titles": [
-        "RBAC Permission Denied",
-        "SSO Login Loop",
-        "Password Reset Troubleshooting"
+        "Slow Dashboard Performance",
+        "Incident Escalation Policy",
+        "RBAC Permission Denied"
       ],
-      "confidence": 0.35,
+      "confidence": 0.2,
       "pass": true
     },
     {
@@ -105,9 +105,9 @@
       "query": "数据库连接错误 intermittent",
       "expected": "Database Connection Errors",
       "top_kb_titles": [
+        "Invoice Generation Delay",
         "Database Connection Errors",
-        "SSO Login Loop",
-        "Password Reset Troubleshooting"
+        "Data Export Timeout"
       ],
       "confidence": 0.2,
       "pass": true
@@ -130,8 +130,8 @@
       "expected": "Invoice Generation Delay",
       "top_kb_titles": [
         "Invoice Generation Delay",
-        "RBAC Permission Denied",
-        "API Rate Limit Exceeded"
+        "SSO Login Loop",
+        "Password Reset Troubleshooting"
       ],
       "confidence": 0.2,
       "pass": true
@@ -142,10 +142,10 @@
       "expected": "SSO Login Loop",
       "top_kb_titles": [
         "SSO Login Loop",
-        "RBAC Permission Denied",
-        "Slow Dashboard Performance"
+        "Data Export Timeout",
+        "Webhook Delivery Failures"
       ],
-      "confidence": 0.3,
+      "confidence": 0.29,
       "pass": true
     },
     {
@@ -154,10 +154,10 @@
       "expected": "Webhook Delivery Failures",
       "top_kb_titles": [
         "Webhook Delivery Failures",
-        "Database Connection Errors",
-        "Data Export Timeout"
+        "Data Export Timeout",
+        "Password Reset Troubleshooting"
       ],
-      "confidence": 0.33,
+      "confidence": 0.37,
       "pass": true
     },
     {
@@ -166,10 +166,10 @@
       "expected": "API Rate Limit Exceeded",
       "top_kb_titles": [
         "API Rate Limit Exceeded",
-        "Password Reset Troubleshooting",
-        "Slow Dashboard Performance"
+        "Slow Dashboard Performance",
+        "Password Reset Troubleshooting"
       ],
-      "confidence": 0.54,
+      "confidence": 0.53,
       "pass": true
     },
     {
@@ -177,11 +177,11 @@
       "query": "password email in spam folder",
       "expected": "Password Reset Troubleshooting",
       "top_kb_titles": [
-        "Password Reset Troubleshooting",
         "Invoice Generation Delay",
-        "API Rate Limit Exceeded"
+        "Password Reset Troubleshooting",
+        "RBAC Permission Denied"
       ],
-      "confidence": 0.37,
+      "confidence": 0.24,
       "pass": true
     },
     {
@@ -191,7 +191,7 @@
       "top_kb_titles": [
         "Slow Dashboard Performance",
         "Webhook Delivery Failures",
-        "API Rate Limit Exceeded"
+        "Database Connection Errors"
       ],
       "confidence": 0.28,
       "pass": true
@@ -202,10 +202,10 @@
       "expected": "Data Export Timeout",
       "top_kb_titles": [
         "Data Export Timeout",
-        "Invoice Generation Delay",
+        "Password Reset Troubleshooting",
         "Webhook Delivery Failures"
       ],
-      "confidence": 0.4,
+      "confidence": 0.6,
       "pass": true
     },
     {
@@ -214,10 +214,10 @@
       "expected": "RBAC Permission Denied",
       "top_kb_titles": [
         "RBAC Permission Denied",
-        "SSO Login Loop",
-        "Password Reset Troubleshooting"
+        "Mobile Push Notification Issues",
+        "Incident Escalation Policy"
       ],
-      "confidence": 0.41,
+      "confidence": 0.42,
       "pass": true
     },
     {
@@ -226,8 +226,8 @@
       "expected": "Database Connection Errors",
       "top_kb_titles": [
         "Database Connection Errors",
-        "Mobile Push Notification Issues",
-        "Slow Dashboard Performance"
+        "Slow Dashboard Performance",
+        "Incident Escalation Policy"
       ],
       "confidence": 0.3,
       "pass": true
@@ -238,8 +238,8 @@
       "expected": "Incident Escalation Policy",
       "top_kb_titles": [
         "Incident Escalation Policy",
-        "Invoice Generation Delay",
-        "RBAC Permission Denied"
+        "RBAC Permission Denied",
+        "Slow Dashboard Performance"
       ],
       "confidence": 0.2,
       "pass": true

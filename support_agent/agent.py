@@ -7,6 +7,9 @@ from support_agent.tickets import TicketStore
 
 
 ESCALATION_TERMS = {"escalate", "无法", "人工", "still", "cannot", "can't", "error persists"}
+MIN_CONFIDENCE = 0.2
+MAX_CONFIDENCE = 0.95
+DRAFT_CONFIDENCE_THRESHOLD = 0.45
 
 
 @dataclass
@@ -28,7 +31,7 @@ class SupportAgent:
         ticket_hits = self.tickets.search_tickets(query, top_k=2)
 
         top_score = kb_hits[0]["score"] if kb_hits else 0.0
-        confidence = round(min(0.95, max(0.2, top_score)), 2)
+        confidence = round(min(MAX_CONFIDENCE, max(MIN_CONFIDENCE, top_score)), 2)
 
         evidence = [f"{h['doc_id']}: {h['title']}" for h in kb_hits]
         if ticket_hits:
@@ -50,7 +53,7 @@ class SupportAgent:
             "若问题持续，补充错误日志和复现步骤",
         ]
 
-        needs_draft = confidence < 0.45 or any(term in query.lower() for term in ESCALATION_TERMS)
+        needs_draft = confidence < DRAFT_CONFIDENCE_THRESHOLD or any(term in query.lower() for term in ESCALATION_TERMS)
         ticket_draft = None
         if needs_draft:
             ticket_draft = self.tickets.create_ticket_draft(session_id=session_id, query=query, evidence=evidence)
