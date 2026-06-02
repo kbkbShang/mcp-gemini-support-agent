@@ -1,0 +1,82 @@
+[
+  {
+    "query": "用户收不到密码重置邮件怎么办？",
+    "expect_doc": "Password Reset Troubleshooting"
+  },
+  {
+    "query": "SSO 登录一直循环跳转如何处理？",
+    "expect_doc": "SSO Login Loop"
+  },
+  {
+    "query": "API 返回 429 如何解决？",
+    "expect_doc": "API Rate Limit Exceeded"
+  },
+  {
+    "query": "Webhook 一直投递失败",
+    "expect_doc": "Webhook Delivery Failures"
+  },
+  {
+    "query": "导出数据超时怎么排查",
+    "expect_doc": "Data Export Timeout"
+  },
+  {
+    "query": "移动端推送通知没有送达",
+    "expect_doc": "Mobile Push Notification Issues"
+  },
+  {
+    "query": "RBAC 权限拒绝",
+    "expect_doc": "RBAC Permission Denied"
+  },
+  {
+    "query": "仪表盘很慢",
+    "expect_doc": "Slow Dashboard Performance"
+  },
+  {
+    "query": "数据库连接错误 intermittent",
+    "expect_doc": "Database Connection Errors"
+  },
+  {
+    "query": "需要升级人工支持，问题持续",
+    "expect_doc": "Incident Escalation Policy"
+  },
+  {
+    "query": "invoice 延迟生成",
+    "expect_doc": "Invoice Generation Delay"
+  },
+  {
+    "query": "callback url mismatch in SSO",
+    "expect_doc": "SSO Login Loop"
+  },
+  {
+    "query": "how to handle retry for webhook timeout",
+    "expect_doc": "Webhook Delivery Failures"
+  },
+  {
+    "query": "API quota increase and 429",
+    "expect_doc": "API Rate Limit Exceeded"
+  },
+  {
+    "query": "password email in spam folder",
+    "expect_doc": "Password Reset Troubleshooting"
+  },
+  {
+    "query": "dashboard query too large",
+    "expect_doc": "Slow Dashboard Performance"
+  },
+  {
+    "query": "export endpoint timeout with huge range",
+    "expect_doc": "Data Export Timeout"
+  },
+  {
+    "query": "permission mapping outdated",
+    "expect_doc": "RBAC Permission Denied"
+  },
+  {
+    "query": "db pool exhausted",
+    "expect_doc": "Database Connection Errors"
+  },
+  {
+    "query": "still cannot fix production error",
+    "expect_doc": "Incident Escalation Policy"
+  }
+]

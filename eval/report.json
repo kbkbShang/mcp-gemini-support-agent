@@ -1,0 +1,248 @@
+{
+  "generated_at": "2026-06-02T06:08:44.305284+00:00",
+  "total": 20,
+  "passed": 16,
+  "pass_rate": 0.8,
+  "items": [
+    {
+      "id": 1,
+      "query": "用户收不到密码重置邮件怎么办？",
+      "expected": "Password Reset Troubleshooting",
+      "top_kb_titles": [
+        "SSO Login Loop",
+        "Password Reset Troubleshooting",
+        "API Rate Limit Exceeded"
+      ],
+      "confidence": 0.2,
+      "pass": true
+    },
+    {
+      "id": 2,
+      "query": "SSO 登录一直循环跳转如何处理？",
+      "expected": "SSO Login Loop",
+      "top_kb_titles": [
+        "SSO Login Loop",
+        "Password Reset Troubleshooting",
+        "API Rate Limit Exceeded"
+      ],
+      "confidence": 0.2,
+      "pass": true
+    },
+    {
+      "id": 3,
+      "query": "API 返回 429 如何解决？",
+      "expected": "API Rate Limit Exceeded",
+      "top_kb_titles": [
+        "Slow Dashboard Performance",
+        "API Rate Limit Exceeded",
+        "SSO Login Loop"
+      ],
+      "confidence": 0.27,
+      "pass": true
+    },
+    {
+      "id": 4,
+      "query": "Webhook 一直投递失败",
+      "expected": "Webhook Delivery Failures",
+      "top_kb_titles": [
+        "Webhook Delivery Failures",
+        "SSO Login Loop",
+        "Password Reset Troubleshooting"
+      ],
+      "confidence": 0.37,
+      "pass": true
+    },
+    {
+      "id": 5,
+      "query": "导出数据超时怎么排查",
+      "expected": "Data Export Timeout",
+      "top_kb_titles": [
+        "SSO Login Loop",
+        "Password Reset Troubleshooting",
+        "API Rate Limit Exceeded"
+      ],
+      "confidence": 0.2,
+      "pass": false
+    },
+    {
+      "id": 6,
+      "query": "移动端推送通知没有送达",
+      "expected": "Mobile Push Notification Issues",
+      "top_kb_titles": [
+        "SSO Login Loop",
+        "Password Reset Troubleshooting",
+        "API Rate Limit Exceeded"
+      ],
+      "confidence": 0.2,
+      "pass": false
+    },
+    {
+      "id": 7,
+      "query": "RBAC 权限拒绝",
+      "expected": "RBAC Permission Denied",
+      "top_kb_titles": [
+        "Slow Dashboard Performance",
+        "Incident Escalation Policy",
+        "RBAC Permission Denied"
+      ],
+      "confidence": 0.2,
+      "pass": true
+    },
+    {
+      "id": 8,
+      "query": "仪表盘很慢",
+      "expected": "Slow Dashboard Performance",
+      "top_kb_titles": [
+        "SSO Login Loop",
+        "Password Reset Troubleshooting",
+        "API Rate Limit Exceeded"
+      ],
+      "confidence": 0.2,
+      "pass": false
+    },
+    {
+      "id": 9,
+      "query": "数据库连接错误 intermittent",
+      "expected": "Database Connection Errors",
+      "top_kb_titles": [
+        "Invoice Generation Delay",
+        "Database Connection Errors",
+        "Data Export Timeout"
+      ],
+      "confidence": 0.2,
+      "pass": true
+    },
+    {
+      "id": 10,
+      "query": "需要升级人工支持，问题持续",
+      "expected": "Incident Escalation Policy",
+      "top_kb_titles": [
+        "SSO Login Loop",
+        "Password Reset Troubleshooting",
+        "API Rate Limit Exceeded"
+      ],
+      "confidence": 0.2,
+      "pass": false
+    },
+    {
+      "id": 11,
+      "query": "invoice 延迟生成",
+      "expected": "Invoice Generation Delay",
+      "top_kb_titles": [
+        "Invoice Generation Delay",
+        "SSO Login Loop",
+        "Password Reset Troubleshooting"
+      ],
+      "confidence": 0.2,
+      "pass": true
+    },
+    {
+      "id": 12,
+      "query": "callback url mismatch in SSO",
+      "expected": "SSO Login Loop",
+      "top_kb_titles": [
+        "SSO Login Loop",
+        "Data Export Timeout",
+        "Webhook Delivery Failures"
+      ],
+      "confidence": 0.29,
+      "pass": true
+    },
+    {
+      "id": 13,
+      "query": "how to handle retry for webhook timeout",
+      "expected": "Webhook Delivery Failures",
+      "top_kb_titles": [
+        "Webhook Delivery Failures",
+        "Data Export Timeout",
+        "Password Reset Troubleshooting"
+      ],
+      "confidence": 0.37,
+      "pass": true
+    },
+    {
+      "id": 14,
+      "query": "API quota increase and 429",
+      "expected": "API Rate Limit Exceeded",
+      "top_kb_titles": [
+        "API Rate Limit Exceeded",
+        "Slow Dashboard Performance",
+        "Password Reset Troubleshooting"
+      ],
+      "confidence": 0.53,
+      "pass": true
+    },
+    {
+      "id": 15,
+      "query": "password email in spam folder",
+      "expected": "Password Reset Troubleshooting",
+      "top_kb_titles": [
+        "Invoice Generation Delay",
+        "Password Reset Troubleshooting",
+        "RBAC Permission Denied"
+      ],
+      "confidence": 0.24,
+      "pass": true
+    },
+    {
+      "id": 16,
+      "query": "dashboard query too large",
+      "expected": "Slow Dashboard Performance",
+      "top_kb_titles": [
+        "Slow Dashboard Performance",
+        "Webhook Delivery Failures",
+        "Database Connection Errors"
+      ],
+      "confidence": 0.28,
+      "pass": true
+    },
+    {
+      "id": 17,
+      "query": "export endpoint timeout with huge range",
+      "expected": "Data Export Timeout",
+      "top_kb_titles": [
+        "Data Export Timeout",
+        "Password Reset Troubleshooting",
+        "Webhook Delivery Failures"
+      ],
+      "confidence": 0.6,
+      "pass": true
+    },
+    {
+      "id": 18,
+      "query": "permission mapping outdated",
+      "expected": "RBAC Permission Denied",
+      "top_kb_titles": [
+        "RBAC Permission Denied",
+        "Mobile Push Notification Issues",
+        "Incident Escalation Policy"
+      ],
+      "confidence": 0.42,
+      "pass": true
+    },
+    {
+      "id": 19,
+      "query": "db pool exhausted",
+      "expected": "Database Connection Errors",
+      "top_kb_titles": [
+        "Database Connection Errors",
+        "Slow Dashboard Performance",
+        "Incident Escalation Policy"
+      ],
+      "confidence": 0.3,
+      "pass": true
+    },
+    {
+      "id": 20,
+      "query": "still cannot fix production error",
+      "expected": "Incident Escalation Policy",
+      "top_kb_titles": [
+        "Incident Escalation Policy",
+        "RBAC Permission Denied",
+        "Slow Dashboard Performance"
+      ],
+      "confidence": 0.2,
+      "pass": true
+    }
+  ]
+}
