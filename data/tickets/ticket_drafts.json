@@ -1,0 +1,14 @@
+[
+  {
+    "draft_id": "DRF-0001",
+    "title": "VPN still not working",
+    "description": "User cannot connect to VPN after restarting the client and completing MFA.",
+    "priority": "high",
+    "tags": [
+      "vpn",
+      "authentication"
+    ],
+    "status": "draft",
+    "created_at": "2026-06-05T22:42:53.764446+00:00"
+  }
+]
