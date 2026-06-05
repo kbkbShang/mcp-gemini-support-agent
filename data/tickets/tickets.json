@@ -1,0 +1,101 @@
+[
+  {
+    "ticket_id": "TCK-0001",
+    "title": "VPN authentication failed",
+    "description": "User cannot connect to VPN due to authentication failure.",
+    "status": "resolved",
+    "priority": "medium",
+    "tags": ["vpn", "authentication"],
+    "resolution": "User reauthenticated through SSO and completed MFA approval."
+  },
+
+  {
+    "ticket_id": "TCK-0002",
+    "title": "VPN timeout connection issue",
+    "description": "VPN connection times out after login.",
+    "status": "resolved",
+    "priority": "medium",
+    "tags": ["vpn", "network"],
+    "resolution": "User restarted VPN client and switched to a stable network."
+  },
+
+  {
+    "ticket_id": "TCK-0003",
+    "title": "SSO login failed",
+    "description": "User receives invalid credential error during SSO login.",
+    "status": "resolved",
+    "priority": "high",
+    "tags": ["sso", "authentication"],
+    "resolution": "Password was reset through the identity portal."
+  },
+
+  {
+    "ticket_id": "TCK-0004",
+    "title": "MFA approval not received",
+    "description": "User does not receive MFA push notification.",
+    "status": "resolved",
+    "priority": "high",
+    "tags": ["mfa", "authentication"],
+    "resolution": "User re-enrolled MFA device."
+  },
+
+  {
+    "ticket_id": "TCK-0005",
+    "title": "Account locked after failed login attempts",
+    "description": "User account became locked.",
+    "status": "resolved",
+    "priority": "high",
+    "tags": ["account", "authentication"],
+    "resolution": "IT support unlocked the account and reset the password."
+  },
+
+  {
+    "ticket_id": "TCK-0006",
+    "title": "Software installation permission denied",
+    "description": "User cannot install approved software.",
+    "status": "resolved",
+    "priority": "medium",
+    "tags": ["software", "permissions"],
+    "resolution": "Admin privileges were temporarily granted."
+  },
+
+  {
+    "ticket_id": "TCK-0007",
+    "title": "License checkout failed",
+    "description": "Engineering software cannot obtain a license.",
+    "status": "resolved",
+    "priority": "medium",
+    "tags": ["license", "software"],
+    "resolution": "License server was restarted."
+  },
+
+  {
+    "ticket_id": "TCK-0008",
+    "title": "Shared drive access denied",
+    "description": "User cannot access project shared drive.",
+    "status": "resolved",
+    "priority": "medium",
+    "tags": ["permissions", "shared-drive"],
+    "resolution": "User was added to the correct security group."
+  },
+
+  {
+    "ticket_id": "TCK-0009",
+    "title": "Remote desktop unavailable",
+    "description": "Cannot connect to office workstation remotely.",
+    "status": "resolved",
+    "priority": "medium",
+    "tags": ["remote-desktop", "vpn"],
+    "resolution": "VPN connection was restored."
+  },
+
+  {
+    "ticket_id": "TCK-0010",
+    "title": "Email synchronization issue",
+    "description": "Outlook mailbox is not updating.",
+    "status": "resolved",
+    "priority": "low",
+    "tags": ["email"],
+    "resolution": "User reauthenticated and mailbox synchronized successfully."
+  }
+]
