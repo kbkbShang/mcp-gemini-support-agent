@@ -11,6 +11,9 @@ from src.agent_api.tools_client import (
     call_create_ticket_draft,
 )
 
+from pydantic import ValidationError
+from src.agent_api.response_schemas import AgentResponse
+
 
 load_dotenv()
 
@@ -60,6 +63,42 @@ def create_ticket_draft(
         tags=tags or [],
     )
 
+def extract_json_text(text: str) -> str:
+    text = text.strip()
+
+    if "```json" in text:
+        start = text.find("```json") + len("```json")
+        end = text.find("```", start)
+        if end != -1:
+            return text[start:end].strip()
+
+    if "```" in text:
+        start = text.find("```") + len("```")
+        end = text.find("```", start)
+        if end != -1:
+            return text[start:end].strip()
+
+    start = text.find("{")
+    end = text.rfind("}")
+
+    if start != -1 and end != -1 and end > start:
+        return text[start:end + 1].strip()
+
+    return text
+
+def clean_json_text(text: str) -> str:
+    text = text.strip()
+
+    if text.startswith("```json"):
+        text = text[len("```json"):].strip()
+
+    if text.startswith("```"):
+        text = text[len("```"):].strip()
+
+    if text.endswith("```"):
+        text = text[:-3].strip()
+
+    return text
 
 SYSTEM_INSTRUCTION = """
 You are an enterprise IT support agent.
@@ -95,10 +134,6 @@ def run_gemini_agent(query: str) -> dict:
             ),
         )
 
-        print("===== GEMINI RAW RESPONSE =====")
-        print(response)
-        print("===== GEMINI TEXT =====")
-        print(response.text)
 
         text = response.text or ""
 
@@ -110,8 +145,29 @@ def run_gemini_agent(query: str) -> dict:
                 "next_actions": [],
                 "ticket_draft": {"created": False, "draft_id": None},
             }
+        
+        try:
+            #cleaned_text = clean_json_text(text)
+            #return json.loads(cleaned_text)
+            json_text = extract_json_text(text)
+            parsed_json = json.loads(json_text)
 
-        return json.loads(text.strip())
+            validated_response = AgentResponse.model_validate(parsed_json)
+
+            return validated_response.model_dump()
+        except (json.JSONDecodeError, ValidationError) as e:
+            return {
+                "answer": text,
+                "citations": [],
+                "confidence": 0.0,
+                "next_actions": [
+                    f"Response parsing or validation failed: {str(e)}"
+                ],
+                "ticket_draft": {
+                    "created": False,
+                    "draft_id": None,
+                },
+            }
 
     except Exception as e:
         return {

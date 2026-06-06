@@ -5,6 +5,7 @@ import os
 
 # from src.agent_api.agent import run_agent
 from src.agent_api.gemini_agent_v1 import run_gemini_agent
+# from src.agent_api.gemini_agent_v2 import run_gemini_agent_v2
 
 # This is a skeleton implementation of the MCP Gemini Support Agent API. It defines the API endpoints and data models, but the actual logic for handling chat requests and calling tools is not implemented yet. The tool server URL is configurable via an environment variable.
 app = FastAPI(title="MCP Gemini Support Agent API", description="API for MCP Gemini Support Agent", version="1.0.0")
