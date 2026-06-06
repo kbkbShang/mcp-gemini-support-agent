@@ -5,3 +5,4 @@ __pycache__/
 venv/
 data/chroma/
 eval/report.json
+.vscode/settings.json
