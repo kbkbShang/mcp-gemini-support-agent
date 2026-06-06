@@ -3,6 +3,8 @@ from pydantic import BaseModel
 import requests
 import os
 
+from src.agent_api.agent import run_agent
+
 # This is a skeleton implementation of the MCP Gemini Support Agent API. It defines the API endpoints and data models, but the actual logic for handling chat requests and calling tools is not implemented yet. The tool server URL is configurable via an environment variable.
 app = FastAPI(title="MCP Gemini Support Agent API", description="API for MCP Gemini Support Agent", version="1.0.0")
 
@@ -26,17 +28,4 @@ def health():
 ## This is a mock implementation of the chat endpoint. In a real implementation, this would process the query, call the appropriate tools, and generate a response based on the tool outputs.
 @app.post("/chat")
 def chat(request: ChatRequest):
-    return {
-        "answer": "Agent skeleton is running. Tool calling will be implemented later.",
-        "citations": [],
-        "confidence": 0.0,
-        "next_actions": [
-            "Implement Gemini function calling",
-            "Connect search_kb tool",
-            "Add citation-grounded response"
-        ],
-        "ticket_draft": {
-            "created": False,
-            "draft_id": None
-        }
-    }
+    return run_agent(request.query)

@@ -21,5 +21,16 @@
     ],
     "status": "draft",
     "created_at": "2026-06-05T23:09:50.238087+00:00"
+  },
+  {
+    "draft_id": "DRF-0003",
+    "title": "Unresolved support request: The office coffee machine is making loud noise",
+    "description": "User asked: The office coffee machine is making loud noise. No sufficient KB evidence was found.",
+    "priority": "medium",
+    "tags": [
+      "unresolved"
+    ],
+    "status": "draft",
+    "created_at": "2026-06-06T18:44:25.310392+00:00"
   }
 ]
