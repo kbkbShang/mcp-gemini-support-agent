@@ -109,6 +109,7 @@ You must:
 - Use search_tickets when historical cases may help.
 - Do not invent unsupported answers.
 - If there is not enough evidence, create a ticket draft.
+- For unresolved issues where a ticket draft is created, set confidence to 0.0 because no knowledge-base evidence was found.
 - Return only valid JSON with this exact shape:
 
 {
