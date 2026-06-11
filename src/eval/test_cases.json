@@ -1,0 +1,72 @@
+[
+  {
+    "id": "eval_001",
+    "query": "VPN authentication failed",
+    "expected_tools": ["search_kb"],
+    "should_have_citations": true,
+    "should_create_ticket": false
+  },
+  {
+    "id": "eval_002",
+    "query": "How do I completely set up VPN access?",
+    "expected_tools": ["search_kb"],
+    "should_have_citations": true,
+    "should_create_ticket": false
+  },
+  {
+    "id": "eval_003",
+    "query": "Give me the full VPN support policy including setup, common errors, and escalation steps.",
+    "expected_tools": ["search_kb", "get_kb_doc"],
+    "should_have_citations": true,
+    "should_create_ticket": false
+  },
+  {
+    "id": "eval_004",
+    "query": "SSO login failed with invalid credentials",
+    "expected_tools": ["search_kb"],
+    "should_have_citations": true,
+    "should_create_ticket": false
+  },
+  {
+    "id": "eval_005",
+    "query": "Engineering software license checkout failed",
+    "expected_tools": ["search_kb"],
+    "should_have_citations": true,
+    "should_create_ticket": false
+  },
+  {
+    "id": "eval_006",
+    "query": "Software installation failed because permission was denied",
+    "expected_tools": ["search_kb"],
+    "should_have_citations": true,
+    "should_create_ticket": false
+  },
+  {
+    "id": "eval_007",
+    "query": "Find a similar resolved ticket for VPN authentication failure",
+    "expected_tools": ["search_kb", "search_tickets"],
+    "should_have_citations": true,
+    "should_create_ticket": false
+  },
+  {
+    "id": "eval_008",
+    "query": "The office coffee machine is making loud noise",
+    "expected_tools": ["search_kb", "create_ticket_draft"],
+    "should_have_citations": false,
+    "should_create_ticket": true
+  },
+  {
+    "id": "eval_009",
+    "query": "My office chair is broken",
+    "expected_tools": ["search_kb", "create_ticket_draft"],
+    "should_have_citations": false,
+    "should_create_ticket": true
+  },
+  {
+    "id": "eval_010",
+    "query": "The cafeteria microwave stopped working",
+    "expected_tools": ["search_kb", "create_ticket_draft"],
+    "should_have_citations": false,
+    "should_create_ticket": true
+  }
+]
