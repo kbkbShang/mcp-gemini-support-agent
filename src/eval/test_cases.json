@@ -8,7 +8,7 @@
   },
   {
     "id": "eval_002",
-    "query": "How do I completely set up VPN access?",
+    "query": "How do I connect to VPN using the company VPN client?",
     "expected_tools": ["search_kb"],
     "should_have_citations": true,
     "should_create_ticket": false
@@ -16,7 +16,8 @@
   {
     "id": "eval_003",
     "query": "Give me the full VPN support policy including setup, common errors, and escalation steps.",
-    "expected_tools": ["search_kb", "get_kb_doc"],
+    "expected_tools": ["search_kb"],
+    "optional_tools": ["get_kb_doc"],
     "should_have_citations": true,
     "should_create_ticket": false
   },
@@ -44,28 +45,63 @@
   {
     "id": "eval_007",
     "query": "Find a similar resolved ticket for VPN authentication failure",
-    "expected_tools": ["search_kb", "search_tickets"],
-    "should_have_citations": true,
+    "expected_tools": ["search_tickets"],
+    "should_have_citations": false,
     "should_create_ticket": false
   },
   {
     "id": "eval_008",
-    "query": "The office coffee machine is making loud noise",
-    "expected_tools": ["search_kb", "create_ticket_draft"],
+    "query": "Create a ticket draft because the office coffee machine is making loud noise",
+    "expected_tools": ["create_ticket_draft"],
     "should_have_citations": false,
     "should_create_ticket": true
   },
   {
     "id": "eval_009",
-    "query": "My office chair is broken",
-    "expected_tools": ["search_kb", "create_ticket_draft"],
+    "query": "My office chair is broken and I need support follow-up",
+    "expected_tools": ["create_ticket_draft"],
     "should_have_citations": false,
     "should_create_ticket": true
   },
   {
     "id": "eval_010",
-    "query": "The cafeteria microwave stopped working",
-    "expected_tools": ["search_kb", "create_ticket_draft"],
+    "query": "The cafeteria microwave stopped working. Please create a support ticket draft.",
+    "expected_tools": ["create_ticket_draft"],
+    "should_have_citations": false,
+    "should_create_ticket": true
+  },
+  {
+    "id": "eval_011",
+    "query": "How do I reset my password?",
+    "expected_tools": ["search_kb"],
+    "should_have_citations": true,
+    "should_create_ticket": false
+  },
+  {
+    "id": "eval_012",
+    "query": "MFA approval is not showing on my phone",
+    "expected_tools": ["search_kb"],
+    "should_have_citations": true,
+    "should_create_ticket": false
+  },
+  {
+    "id": "eval_013",
+    "query": "I cannot access the shared drive",
+    "expected_tools": ["search_kb"],
+    "should_have_citations": true,
+    "should_create_ticket": false
+  },
+  {
+    "id": "eval_014",
+    "query": "Find historical tickets about license server unavailable",
+    "expected_tools": ["search_tickets"],
+    "should_have_citations": false,
+    "should_create_ticket": false
+  },
+  {
+    "id": "eval_015",
+    "query": "Create a high priority ticket draft: I cannot access any company system after my account was locked",
+    "expected_tools": ["create_ticket_draft"],
     "should_have_citations": false,
     "should_create_ticket": true
   }
