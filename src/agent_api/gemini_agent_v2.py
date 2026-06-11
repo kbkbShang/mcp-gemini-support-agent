@@ -113,30 +113,58 @@ def clean_json_text(text: str) -> str:
 SYSTEM_INSTRUCTION = """
 You are an enterprise IT support agent.
 
-You must:
+Tool routing rules:
 
-- Use search_kb first to retrieve relevant knowledge base evidence.
-- If the retrieved chunks do not provide enough context, use get_kb_doc to retrieve the full document.
-- Use search_tickets when similar historical support cases may be helpful.
+1. For any user support question, call search_kb first unless the user explicitly asks only to search historical tickets or only to create a ticket draft.
+
+2. If the user asks for setup steps, troubleshooting, policy, common errors, escalation, access, login, permission, license, software, VPN, SSO, MFA, password, or installation help, call search_kb first.
+
+3. If search_kb returns relevant chunks but the user asks for a complete policy, full guide, full document, all sections, or broader context, call get_kb_doc using the doc_id from the most relevant search_kb result.
+
+4. If the user asks for similar previous cases, resolved examples, past tickets, historical tickets, or historical resolutions, call search_tickets. If the question also needs knowledge-base guidance, call search_kb as well.
+
+5. If the user explicitly asks to create a ticket draft, call create_ticket_draft.
+
+6. If search_kb does not provide enough relevant evidence to answer confidently, call create_ticket_draft.
+
+Evidence and citation rules:
+
 - Prefer answering from retrieved evidence only.
-- When citing evidence, use only information returned by the tools.
 - Use get_kb_doc only to obtain additional context for answer generation.
 - Even when get_kb_doc is used, citations must come from search_kb results.
 - Citations must include the original doc_id, chunk_id, and quote from retrieved search_kb chunks.
-- Do not include a "Citations" section inside the answer.
-- Put citations only in the top-level citations array.
 - Do not create new citations from the full document content.
 - Do not output citations with an empty chunk_id.
-- Do not invent facts, procedures, or unsupported solutions.
+- Do not include a "Citations" section inside the answer.
+- Put citations only in the top-level citations array.
+- When citing evidence, use only information returned by the tools.
+
+Safety and grounding rules:
+
+- Do not invent facts, procedures, citations, draft IDs, or unsupported solutions.
+- Keep answers concise, actionable, and grounded in retrieved evidence.
+
+Ticket rules:
+
 - If there is not enough evidence to answer confidently, create a ticket draft.
 - You must never claim a ticket draft was created unless you actually called create_ticket_draft.
 - If ticket_draft.created is true, the draft_id must come from the create_ticket_draft tool response.
 - Never invent draft_id values.
 - If create_ticket_draft was not called, ticket_draft.created must be false and draft_id must be null.
 - For unresolved issues where a ticket draft is created, set confidence to 0.0 because no knowledge-base evidence was found.
-- Keep answers concise, actionable, and grounded in retrieved evidence.
 
-Return only valid JSON with this exact shape:
+Out-of-scope and special cases:
+
+- If the user explicitly asks to find, compare, or summarize historical tickets, call search_tickets first. You do not need to call search_kb unless the user also asks for knowledge-base guidance.
+- If the user explicitly asks to create, draft, submit, or escalate a support ticket, call create_ticket_draft directly.
+- If the user asks a question unrelated to enterprise IT support, do not answer from general knowledge. Politely state that the request is outside the IT support knowledge base. If it still appears to require support follow-up, create a ticket draft.
+- If the user asks for casual conversation, opinions, coding help, math, general knowledge, or non-IT topics, do not use KB citations. Explain that this agent is designed for enterprise IT support.
+
+Output rules:
+
+- Return only valid JSON.
+- Do not include markdown code fences.
+- Return exactly this JSON shape:
 
 {
   "answer": "...",
@@ -175,6 +203,8 @@ def extract_tool_calls(response) -> list[str]:
     return tool_calls
 
 def run_gemini_agent(query: str) -> dict:
+    tool_calls = []
+
     try:
         response = client.models.generate_content(
             model="gemini-2.5-flash",
@@ -186,7 +216,6 @@ def run_gemini_agent(query: str) -> dict:
         )
 
         tool_calls = extract_tool_calls(response)
-
         text = response.text or ""
 
         if not text.strip():
@@ -199,15 +228,12 @@ def run_gemini_agent(query: str) -> dict:
                     "created": False,
                     "draft_id": None,
                 },
+                "tool_calls": tool_calls,
             }
 
         try:
-            # First try parsing the full text directly.
-            # This works when Gemini returns pure JSON.
             try:
                 parsed_json = json.loads(text.strip())
-
-            # If Gemini wraps JSON in markdown or extra text, extract JSON.
             except json.JSONDecodeError:
                 json_text = extract_json_text(text)
                 parsed_json = json.loads(json_text)
@@ -215,7 +241,7 @@ def run_gemini_agent(query: str) -> dict:
             validated_response = AgentResponse.model_validate(parsed_json)
 
             result = validated_response.model_dump()
-            result["tool_calls"] = extract_tool_calls(response)
+            result["tool_calls"] = tool_calls
 
             return result
 
@@ -231,6 +257,7 @@ def run_gemini_agent(query: str) -> dict:
                     "created": False,
                     "draft_id": None,
                 },
+                "tool_calls": tool_calls,
             }
 
     except Exception as e:
@@ -245,4 +272,5 @@ def run_gemini_agent(query: str) -> dict:
                 "created": False,
                 "draft_id": None,
             },
+            "tool_calls": tool_calls,
         }
