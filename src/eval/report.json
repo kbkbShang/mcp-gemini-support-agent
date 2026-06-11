@@ -1,10 +1,10 @@
 {
   "total_tests": 15,
-  "passed": 14,
-  "failed": 1,
-  "api_errors": 1,
+  "passed": 15,
+  "failed": 0,
+  "api_errors": 0,
   "logic_failures": 0,
-  "pass_rate": 0.93,
+  "pass_rate": 1.0,
   "logic_pass_rate": 1.0,
   "results": [
     {
@@ -22,11 +22,11 @@
       "expected_tools": [
         "search_kb"
       ],
-      "citation_valid_count": 2,
-      "citation_count": 2,
-      "answer_preview": "If your VPN client shows \"authentication failed\", please verify your SSO credentials and complete MFA approval. If the issue persists after these steps, a support ticket should be created.",
+      "citation_valid_count": 1,
+      "citation_count": 1,
+      "answer_preview": "If your VPN client shows \"authentication failed,\" please verify your SSO credentials and complete MFA approval.",
       "next_actions": [
-        "Create a support ticket"
+        "If you still cannot connect after verifying your credentials and completing MFA, please let me know so I can create a support ticket for you."
       ],
       "ticket_draft": {
         "created": false,
@@ -50,7 +50,7 @@
       ],
       "citation_valid_count": 1,
       "citation_count": 1,
-      "answer_preview": "To connect to the VPN using the company VPN client, follow these steps:\n\n1. Open the company VPN client.\n2. Enter your company email and password.\n3. Complete the SSO login process.\n4. Approve the multi-factor authentication request.\n5. Select the nearest VPN region.\n6. Click Connect.",
+      "answer_preview": "To connect to the company VPN using the VPN client, follow these steps:\n1. Open the company VPN client.\n2. Enter your company email and password.\n3. Complete the SSO login process.\n4. Approve the multi-factor authentication request.\n5. Select the nearest VPN region.\n6. Click Connect.",
       "next_actions": [],
       "ticket_draft": {
         "created": false,
@@ -60,22 +60,23 @@
     {
       "id": "eval_003",
       "query": "Give me the full VPN support policy including setup, common errors, and escalation steps.",
-      "passed": false,
-      "api_error": true,
-      "tools_match": false,
-      "citations_match": false,
-      "citation_valid": false,
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "citation_valid": true,
       "ticket_match": true,
-      "actual_tools": [],
+      "actual_tools": [
+        "get_kb_doc",
+        "search_kb"
+      ],
       "expected_tools": [
         "search_kb"
       ],
-      "citation_valid_count": 0,
-      "citation_count": 0,
-      "answer_preview": "Agent failed to generate a response: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
-      "next_actions": [
-        "Try again or create a support ticket manually."
-      ],
+      "citation_valid_count": 2,
+      "citation_count": 2,
+      "answer_preview": "The VPN support policy includes setup steps, common issues, and escalation procedures.\n\n**Setup Steps:**\n1. Open the company VPN client.\n2. Enter your company email and password.\n3. Complete the SSO login process.\n4. Approve the multi-factor authentication request.\n5. Select the nearest VPN region.\n6. Click Connect.\n\n**Common Issues:**\n*   If the VPN client shows \"authentication failed,\" verify SSO credentials and complete MFA approval.\n*   If the VPN connection times out, restart the VPN client",
+      "next_actions": [],
       "ticket_draft": {
         "created": false,
         "draft_id": null
@@ -98,8 +99,10 @@
       ],
       "citation_valid_count": 2,
       "citation_count": 2,
-      "answer_preview": "SSO login failures due to invalid credentials can often be resolved by resetting your password. This can typically be done through the self-service identity portal. Other common reasons for SSO failures include expired passwords or locked accounts. If a password reset doesn't resolve the issue, please check if your account is locked or if your password has expired.",
-      "next_actions": [],
+      "answer_preview": "If your SSO login failed due to invalid credentials, you might need to reset your password. This can typically be done through the self-service identity portal. Other potential reasons for SSO failures include expired passwords, locked accounts, missing MFA approval, or browser session issues.",
+      "next_actions": [
+        "Advise the user to try resetting their password via the self-service identity portal."
+      ],
       "ticket_draft": {
         "created": false,
         "draft_id": null
@@ -120,12 +123,12 @@
       "expected_tools": [
         "search_kb"
       ],
-      "citation_valid_count": 3,
-      "citation_count": 3,
-      "answer_preview": "If you are encountering a \"license checkout failed\" error, it might be due to the license server being unavailable or all available licenses being currently in use. If your license was recently approved, try restarting the application or signing out and then signing back in.\n\nIf these steps do not resolve the issue, and especially if the license server is unreachable, or if you suspect issues with access group membership, please create a support ticket for further assistance.",
+      "citation_valid_count": 2,
+      "citation_count": 2,
+      "answer_preview": "If you are encountering a \"license checkout failed\" error, it might be due to the license server being unavailable or all licenses currently being in use. If your license was recently approved, please try restarting the application or signing out and signing in again. If the issue persists, please create a support ticket, especially if the license server is unreachable or if you suspect missing access group membership.",
       "next_actions": [
         "Restart the application or sign out and sign in again.",
-        "If the issue persists, create a support ticket."
+        "Create a support ticket if the issue persists, providing details on whether the license server is unreachable or if access group membership might be an issue."
       ],
       "ticket_draft": {
         "created": false,
@@ -147,12 +150,10 @@
       "expected_tools": [
         "search_kb"
       ],
-      "citation_valid_count": 4,
-      "citation_count": 4,
-      "answer_preview": "If your software installation failed due to \"permission denied\", it's likely that you need administrator approval. This can also occur if you are not part of the required access group. You may need to request access through the service portal if the software is not listed, or if you require admin approval for the installation.",
-      "next_actions": [
-        "Contact IT for admin approval"
-      ],
+      "citation_valid_count": 1,
+      "citation_count": 1,
+      "answer_preview": "If your software installation failed due to \"permission denied\", you may need administrator approval to complete the installation.",
+      "next_actions": [],
       "ticket_draft": {
         "created": false,
         "draft_id": null
@@ -175,7 +176,7 @@
       ],
       "citation_valid_count": 0,
       "citation_count": 0,
-      "answer_preview": "Here is a similar resolved ticket for VPN authentication failure:\n\n*   **Ticket ID:** TCK-0001\n*   **Title:** VPN authentication failed\n*   **Resolution:** User reauthenticated through SSO and completed MFA approval.\n*   **Tags:** vpn, authentication\n*   **Priority:** medium",
+      "answer_preview": "A similar resolved ticket (TCK-0001) for VPN authentication failure indicates that the user reauthenticated through SSO and completed MFA approval.",
       "next_actions": [],
       "ticket_draft": {
         "created": false,
@@ -199,11 +200,11 @@
       ],
       "citation_valid_count": 0,
       "citation_count": 0,
-      "answer_preview": "A ticket draft has been created for the office coffee machine making loud noise. The draft ID is DRF-0013.",
+      "answer_preview": "I've created a ticket draft for you with the title \"Office coffee machine making loud noise\" and the description \"The office coffee machine is making a loud noise, indicating a potential malfunction.\" The draft ID is DRF-0004.",
       "next_actions": [],
       "ticket_draft": {
         "created": true,
-        "draft_id": "DRF-0013"
+        "draft_id": "DRF-0004"
       }
     },
     {
@@ -223,11 +224,11 @@
       ],
       "citation_valid_count": 0,
       "citation_count": 0,
-      "answer_preview": "A ticket draft has been created for your broken office chair with ID DRF-0014. An agent will follow up with you shortly.",
+      "answer_preview": "This request is outside the IT support knowledge base. However, a ticket draft has been created for your broken office chair. The draft ID is DRF-0005. A support agent will review it and follow up with you.",
       "next_actions": [],
       "ticket_draft": {
         "created": true,
-        "draft_id": "DRF-0014"
+        "draft_id": "DRF-0005"
       }
     },
     {
@@ -247,11 +248,11 @@
       ],
       "citation_valid_count": 0,
       "citation_count": 0,
-      "answer_preview": "A ticket draft has been created for the cafeteria microwave issue.",
+      "answer_preview": "I have created a draft ticket for the cafeteria microwave not working. The draft ID is DRF-0006.",
       "next_actions": [],
       "ticket_draft": {
         "created": true,
-        "draft_id": "DRF-0015"
+        "draft_id": "DRF-0006"
       }
     },
     {
@@ -272,9 +273,7 @@
       "citation_valid_count": 1,
       "citation_count": 1,
       "answer_preview": "To reset your password, please follow these steps:\n\n1. Go to the company identity portal.\n2. Click \"Forgot Password\".\n3. Enter your company email address.\n4. Complete MFA verification.\n5. Create a new password that meets company security requirements.\n6. Try signing in again with the new password.",
-      "next_actions": [
-        "Let me know if you encounter any issues during the process."
-      ],
+      "next_actions": [],
       "ticket_draft": {
         "created": false,
         "draft_id": null
@@ -295,10 +294,13 @@
       "expected_tools": [
         "search_kb"
       ],
-      "citation_valid_count": 3,
-      "citation_count": 3,
-      "answer_preview": "If your MFA approval is not showing on your phone, please try the following:\n\n1.  **Check your registered device**: Ensure that your registered device is properly set up to receive MFA prompts. If the MFA prompt does not appear, you may need to re-enroll MFA.\n2.  **Contact IT support**: If you are still unable to receive MFA approvals or complete MFA verification after checking your device or re-enrolling, please contact IT support. You may also need to contact IT support if your account is lock",
-      "next_actions": [],
+      "citation_valid_count": 1,
+      "citation_count": 1,
+      "answer_preview": "If the MFA prompt is not appearing on your phone, you should check your registered device settings or re-enroll MFA.",
+      "next_actions": [
+        "Re-enroll MFA",
+        "Contact IT support if the issue persists"
+      ],
       "ticket_draft": {
         "created": false,
         "draft_id": null
@@ -321,9 +323,9 @@
       ],
       "citation_valid_count": 1,
       "citation_count": 1,
-      "answer_preview": "If you are unable to access the shared drive, please follow these steps:\n\n1. Confirm that you are a member of the relevant team.\n2. If you are not a member, request access.\n3. Refresh your credentials.\n4. Reconnect the shared drive.",
+      "answer_preview": "If you are unable to access the shared drive, please follow these steps:\n1. Confirm your team membership.\n2. Request access if needed.\n3. Refresh your credentials.\n4. Reconnect the shared drive.\n\nIf these steps do not resolve the issue, please let me know and I can help create a support ticket for you.",
       "next_actions": [
-        "Try the provided steps to resolve the issue."
+        "Create a ticket draft if the issue persists"
       ],
       "ticket_draft": {
         "created": false,
@@ -347,7 +349,7 @@
       ],
       "citation_valid_count": 0,
       "citation_count": 0,
-      "answer_preview": "I found three historical tickets about the license server being unavailable. All of them (TCK-0018, TCK-0029, TCK-0040) were resolved by restarting the license service.",
+      "answer_preview": "I found three historical tickets (TCK-0018, TCK-0029, TCK-0040) regarding a \"License server unavailable\" issue. All of them were resolved by restarting the license service.",
       "next_actions": [],
       "ticket_draft": {
         "created": false,
@@ -371,11 +373,11 @@
       ],
       "citation_valid_count": 0,
       "citation_count": 0,
-      "answer_preview": "A high priority ticket draft has been created with the title \"Account Locked - Cannot Access Company Systems\" and description \"I cannot access any company system after my account was locked\". The draft ID is DRF-0016.",
+      "answer_preview": "A high priority ticket draft has been created with the title 'Account Locked - Cannot Access Company Systems' and description 'I cannot access any company system after my account was locked'. The draft ID is DRF-0007.",
       "next_actions": [],
       "ticket_draft": {
         "created": true,
-        "draft_id": "DRF-0016"
+        "draft_id": "DRF-0007"
       }
     }
   ]

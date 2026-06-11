@@ -32,5 +32,45 @@
     ],
     "status": "draft",
     "created_at": "2026-06-06T18:44:25.310392+00:00"
+  },
+  {
+    "draft_id": "DRF-0004",
+    "title": "Office coffee machine making loud noise",
+    "description": "The office coffee machine is making a loud noise, indicating a potential malfunction.",
+    "priority": "medium",
+    "tags": [],
+    "status": "draft",
+    "created_at": "2026-06-11T22:40:06.942401+00:00"
+  },
+  {
+    "draft_id": "DRF-0005",
+    "title": "Broken office chair",
+    "description": "User reported their office chair is broken and needs support follow-up.",
+    "priority": "medium",
+    "tags": [],
+    "status": "draft",
+    "created_at": "2026-06-11T22:40:20.556094+00:00"
+  },
+  {
+    "draft_id": "DRF-0006",
+    "title": "Cafeteria microwave stopped working",
+    "description": "The cafeteria microwave stopped working.",
+    "priority": "medium",
+    "tags": [],
+    "status": "draft",
+    "created_at": "2026-06-11T22:40:43.695824+00:00"
+  },
+  {
+    "draft_id": "DRF-0007",
+    "title": "Account Locked - Cannot Access Company Systems",
+    "description": "I cannot access any company system after my account was locked",
+    "priority": "high",
+    "tags": [
+      "account",
+      "access",
+      "locked"
+    ],
+    "status": "draft",
+    "created_at": "2026-06-11T22:41:20.525114+00:00"
   }
 ]

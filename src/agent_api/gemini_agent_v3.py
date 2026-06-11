@@ -1,10 +1,13 @@
 import json
 import os
+import time
+
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-import time
+from pydantic import ValidationError
 
+from src.agent_api.response_schemas import AgentResponse
 from src.agent_api.tools_client import (
     call_search_kb,
     call_get_kb_doc,
@@ -12,13 +15,14 @@ from src.agent_api.tools_client import (
     call_create_ticket_draft,
 )
 
-from pydantic import ValidationError
-from src.agent_api.response_schemas import AgentResponse
-
 
 load_dotenv()
 
+MODEL_NAME = "gemini-2.5-flash"
+
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
+_last_retry_count = 0
 
 
 def search_kb(query: str, top_k: int = 3) -> dict:
@@ -40,7 +44,12 @@ def get_kb_doc(doc_id: str) -> dict:
     return call_get_kb_doc(doc_id)
 
 
-def search_tickets(query: str, status: str | None = "resolved", tags: list[str] | None = None, top_k: int = 3) -> dict:
+def search_tickets(
+    query: str,
+    status: str | None = "resolved",
+    tags: list[str] | None = None,
+    top_k: int = 3,
+) -> dict:
     """Search historical support tickets.
 
     Args:
@@ -49,7 +58,12 @@ def search_tickets(query: str, status: str | None = "resolved", tags: list[str] 
         tags: Optional ticket tags filter, such as vpn, sso, mfa, license, permission, etc.
         top_k: Number of tickets to return.
     """
-    return call_search_tickets(query=query, status=status, tags=tags, top_k=top_k)
+    return call_search_tickets(
+        query=query,
+        status=status,
+        tags=tags,
+        top_k=top_k,
+    )
 
 
 def create_ticket_draft(
@@ -72,6 +86,7 @@ def create_ticket_draft(
         priority=priority,
         tags=tags or [],
     )
+
 
 def extract_json_text(text: str) -> str:
     text = text.strip()
@@ -96,6 +111,7 @@ def extract_json_text(text: str) -> str:
 
     return text
 
+
 def is_retryable_gemini_error(error: Exception) -> bool:
     error_text = str(error)
 
@@ -105,6 +121,7 @@ def is_retryable_gemini_error(error: Exception) -> bool:
         or "RESOURCE_EXHAUSTED" in error_text
         or "currently experiencing high demand" in error_text
     )
+
 
 SYSTEM_INSTRUCTION = """
 You are an enterprise IT support agent.
@@ -181,37 +198,42 @@ Output rules:
   }
 }
 """
+
+
 def generate_content_with_retry(query: str, max_retries: int = 3):
+    global _last_retry_count
+
     last_error = None
+    _last_retry_count = 0
 
     for attempt in range(max_retries):
         try:
             return client.models.generate_content(
-                model="gemini-2.5-flash",
+                model=MODEL_NAME,
                 contents=query,
                 config=types.GenerateContentConfig(
                     system_instruction=SYSTEM_INSTRUCTION,
-                    tools=[search_kb, get_kb_doc, search_tickets, create_ticket_draft],
+                    tools=[
+                        search_kb,
+                        get_kb_doc,
+                        search_tickets,
+                        create_ticket_draft,
+                    ],
                 ),
             )
 
         except Exception as e:
-            """
-            print(
-                f"[Retry {attempt+1}/{max_retries}] "
-                f"Gemini API failed: {e}"
-            )
-            """
-
             last_error = e
 
             if not is_retryable_gemini_error(e):
                 raise e
 
+            _last_retry_count += 1
             wait_seconds = 5 * (attempt + 1)
             time.sleep(wait_seconds)
 
     raise last_error
+
 
 def extract_tool_calls(response) -> list[str]:
     tool_calls = []
@@ -229,7 +251,61 @@ def extract_tool_calls(response) -> list[str]:
 
     return tool_calls
 
+
+def build_metadata(
+    start_time: float,
+    tool_calls: list[str],
+    result: dict | None = None,
+) -> dict:
+    result = result or {}
+
+    citations = result.get("citations", [])
+
+    ticket_created = (
+        result
+        .get("ticket_draft", {})
+        .get("created", False)
+    )
+
+    return {
+        "latency_ms": int((time.time() - start_time) * 1000),
+        "retry_count": _last_retry_count,
+        "tool_call_count": len(tool_calls),
+        "citation_count": len(citations),
+        "ticket_created": ticket_created,
+        "model": MODEL_NAME,
+    }
+
+
+def build_fallback_response(
+    answer: str,
+    start_time: float,
+    tool_calls: list[str],
+    next_actions: list[str] | None = None,
+) -> dict:
+    fallback = {
+        "answer": answer,
+        "citations": [],
+        "confidence": 0.0,
+        "next_actions": next_actions or [],
+        "ticket_draft": {
+            "created": False,
+            "draft_id": None,
+        },
+        "tool_calls": tool_calls,
+    }
+
+    fallback["metadata"] = build_metadata(
+        start_time=start_time,
+        tool_calls=tool_calls,
+        result=fallback,
+    )
+
+    return fallback
+
+
 def run_gemini_agent(query: str) -> dict:
+    start_time = time.time()
     tool_calls = []
 
     try:
@@ -239,17 +315,11 @@ def run_gemini_agent(query: str) -> dict:
         text = response.text or ""
 
         if not text.strip():
-            return {
-                "answer": "Gemini did not return a text response. It may have made a tool call but did not produce final JSON.",
-                "citations": [],
-                "confidence": 0.0,
-                "next_actions": [],
-                "ticket_draft": {
-                    "created": False,
-                    "draft_id": None,
-                },
-                "tool_calls": tool_calls,
-            }
+            return build_fallback_response(
+                answer="Gemini did not return a text response. It may have made a tool call but did not produce final JSON.",
+                start_time=start_time,
+                tool_calls=tool_calls,
+            )
 
         try:
             try:
@@ -262,35 +332,30 @@ def run_gemini_agent(query: str) -> dict:
 
             result = validated_response.model_dump()
             result["tool_calls"] = tool_calls
+            result["metadata"] = build_metadata(
+                start_time=start_time,
+                tool_calls=tool_calls,
+                result=result,
+            )
 
             return result
 
         except (json.JSONDecodeError, ValidationError) as e:
-            return {
-                "answer": text,
-                "citations": [],
-                "confidence": 0.0,
-                "next_actions": [
+            return build_fallback_response(
+                answer=text,
+                start_time=start_time,
+                tool_calls=tool_calls,
+                next_actions=[
                     f"Response parsing or validation failed: {str(e)}"
                 ],
-                "ticket_draft": {
-                    "created": False,
-                    "draft_id": None,
-                },
-                "tool_calls": tool_calls,
-            }
+            )
 
     except Exception as e:
-        return {
-            "answer": f"Agent failed to generate a response: {str(e)}",
-            "citations": [],
-            "confidence": 0.0,
-            "next_actions": [
+        return build_fallback_response(
+            answer=f"Agent failed to generate a response: {str(e)}",
+            start_time=start_time,
+            tool_calls=tool_calls,
+            next_actions=[
                 "Try again or create a support ticket manually."
             ],
-            "ticket_draft": {
-                "created": False,
-                "draft_id": None,
-            },
-            "tool_calls": tool_calls,
-        }
+        )
