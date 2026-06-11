@@ -1,0 +1,336 @@
+{
+  "total_tests": 15,
+  "passed": 15,
+  "failed": 0,
+  "api_errors": 0,
+  "logic_failures": 0,
+  "pass_rate": 1.0,
+  "logic_pass_rate": 1.0,
+  "results": [
+    {
+      "id": "eval_001",
+      "query": "VPN authentication failed",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "search_kb"
+      ],
+      "expected_tools": [
+        "search_kb"
+      ],
+      "answer_preview": "If your VPN client shows \"authentication failed\", please verify your SSO credentials and complete MFA approval. If the issue persists, try restarting the VPN client. Ensure your internet connection is stable and that your VPN client is updated to the latest version. If you continue to experience problems after these steps, please create a support ticket.",
+      "next_actions": [
+        "Verify SSO credentials and complete MFA approval.",
+        "Restart the VPN client.",
+        "Check internet connection.",
+        "Update VPN client to the latest version.",
+        "If the issue persists, create a support ticket."
+      ],
+      "ticket_draft": {
+        "created": false,
+        "draft_id": null
+      }
+    },
+    {
+      "id": "eval_002",
+      "query": "How do I connect to VPN using the company VPN client?",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "search_kb"
+      ],
+      "expected_tools": [
+        "search_kb"
+      ],
+      "answer_preview": "To connect to the company VPN client, follow these steps:\n1. Open the company VPN client.\n2. Enter your company email and password.\n3. Complete the SSO login process.\n4. Approve the multi-factor authentication request.\n5. Select the nearest VPN region.\n6. Click Connect.",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": false,
+        "draft_id": null
+      }
+    },
+    {
+      "id": "eval_003",
+      "query": "Give me the full VPN support policy including setup, common errors, and escalation steps.",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "search_kb",
+        "get_kb_doc"
+      ],
+      "expected_tools": [
+        "search_kb"
+      ],
+      "answer_preview": "The VPN support policy includes setup steps, common issues, and escalation procedures.\n\n**Setup Steps:**\n1. Open the company VPN client.\n2. Enter your company email and password.\n3. Complete the SSO login process.\n4. Approve the multi-factor authentication request.\n5. Select the nearest VPN region.\n6. Click Connect.\n\n**Common Issues:**\n- If the VPN client shows \"authentication failed,\" verify your SSO credentials and complete MFA approval.\n- If the VPN connection times out, restart the VPN clien",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": false,
+        "draft_id": null
+      }
+    },
+    {
+      "id": "eval_004",
+      "query": "SSO login failed with invalid credentials",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "search_kb"
+      ],
+      "expected_tools": [
+        "search_kb"
+      ],
+      "answer_preview": "SSO login failures due to invalid credentials can often be resolved by a password reset. You can usually complete a password reset through the self-service identity portal. Other potential causes include expired passwords or locked accounts.",
+      "next_actions": [
+        "Guide user to self-service identity portal for password reset.",
+        "Verify if the account is locked."
+      ],
+      "ticket_draft": {
+        "created": false,
+        "draft_id": null
+      }
+    },
+    {
+      "id": "eval_005",
+      "query": "Engineering software license checkout failed",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "search_kb"
+      ],
+      "expected_tools": [
+        "search_kb"
+      ],
+      "answer_preview": "If your engineering software shows \"license checkout failed\", it could be due to the license server being unavailable or all licenses currently being in use. If the license was recently approved, please try restarting the application or signing out and signing in again.\n\nIf these steps do not resolve the issue, and the license server remains unreachable, you are missing required access group membership, or the software still cannot check out a license after approval, please create a support tick",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": false,
+        "draft_id": null
+      }
+    },
+    {
+      "id": "eval_006",
+      "query": "Software installation failed because permission was denied",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "search_kb"
+      ],
+      "expected_tools": [
+        "search_kb"
+      ],
+      "answer_preview": "If software installation failed due to \"permission denied\", you may need administrator approval or you might not be part of the required access group.",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": false,
+        "draft_id": null
+      }
+    },
+    {
+      "id": "eval_007",
+      "query": "Find a similar resolved ticket for VPN authentication failure",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "search_tickets"
+      ],
+      "expected_tools": [
+        "search_tickets"
+      ],
+      "answer_preview": "The following ticket is similar to your request:\n\n**Ticket ID:** TCK-0001\n**Title:** VPN authentication failed\n**Resolution:** User reauthenticated through SSO and completed MFA approval.\n**Tags:** vpn, authentication\n**Priority:** medium",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": false,
+        "draft_id": null
+      }
+    },
+    {
+      "id": "eval_008",
+      "query": "Create a ticket draft because the office coffee machine is making loud noise",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "create_ticket_draft"
+      ],
+      "expected_tools": [
+        "create_ticket_draft"
+      ],
+      "answer_preview": "A ticket draft has been created with the ID DRF-0015 for the office coffee machine making loud noise. We will investigate the issue.",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": true,
+        "draft_id": "DRF-0015"
+      }
+    },
+    {
+      "id": "eval_009",
+      "query": "My office chair is broken and I need support follow-up",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "create_ticket_draft"
+      ],
+      "expected_tools": [
+        "create_ticket_draft"
+      ],
+      "answer_preview": "A ticket draft has been created for your broken office chair. The draft ID is DRF-0017.",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": true,
+        "draft_id": "DRF-0017"
+      }
+    },
+    {
+      "id": "eval_010",
+      "query": "The cafeteria microwave stopped working. Please create a support ticket draft.",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "create_ticket_draft"
+      ],
+      "expected_tools": [
+        "create_ticket_draft"
+      ],
+      "answer_preview": "A ticket draft has been created for the cafeteria microwave issue. The draft ID is DRF-0018.",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": true,
+        "draft_id": "DRF-0018"
+      }
+    },
+    {
+      "id": "eval_011",
+      "query": "How do I reset my password?",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "search_kb"
+      ],
+      "expected_tools": [
+        "search_kb"
+      ],
+      "answer_preview": "To reset your password, please follow these steps:\n\n1. Go to the company identity portal.\n2. Click \"Forgot Password\".\n3. Enter your company email address.\n4. Complete MFA verification.\n5. Create a new password that meets company security requirements.\n6. Try signing in again with the new password.",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": false,
+        "draft_id": null
+      }
+    },
+    {
+      "id": "eval_012",
+      "query": "MFA approval is not showing on my phone",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "search_kb"
+      ],
+      "expected_tools": [
+        "search_kb"
+      ],
+      "answer_preview": "If your MFA approval is not showing on your phone, please check your registered device or re-enroll MFA. You should also ensure you approve the MFA request on your registered device. If you are still unable to complete MFA verification, please create a support ticket.",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": false,
+        "draft_id": null
+      }
+    },
+    {
+      "id": "eval_013",
+      "query": "I cannot access the shared drive",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "search_kb"
+      ],
+      "expected_tools": [
+        "search_kb"
+      ],
+      "answer_preview": "If you are unable to access the shared drive, please follow these steps:\n1. Confirm that you are a member of the team that owns the shared drive.\n2. If you are not a member, request access.\n3. Refresh your credentials.\n4. Try to reconnect to the shared drive.",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": false,
+        "draft_id": null
+      }
+    },
+    {
+      "id": "eval_014",
+      "query": "Find historical tickets about license server unavailable",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "search_tickets"
+      ],
+      "expected_tools": [
+        "search_tickets"
+      ],
+      "answer_preview": "I found these historical tickets regarding \"license server unavailable\":\n\n*   **TCK-0018**: Priority: medium, Resolution: License service restarted.\n*   **TCK-0029**: Priority: medium, Resolution: License service restarted.\n*   **TCK-0040**: Priority: medium, Resolution: License service restarted.",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": false,
+        "draft_id": null
+      }
+    },
+    {
+      "id": "eval_015",
+      "query": "Create a high priority ticket draft: I cannot access any company system after my account was locked",
+      "passed": true,
+      "api_error": false,
+      "tools_match": true,
+      "citations_match": true,
+      "ticket_match": true,
+      "actual_tools": [
+        "create_ticket_draft"
+      ],
+      "expected_tools": [
+        "create_ticket_draft"
+      ],
+      "answer_preview": "I have created a high priority ticket draft with the title 'Account Locked - Cannot Access Company Systems' and the description 'I cannot access any company system after my account was locked'. The draft ID is DRF-0019.",
+      "next_actions": [],
+      "ticket_draft": {
+        "created": true,
+        "draft_id": "DRF-0019"
+      }
+    }
+  ]
+}
