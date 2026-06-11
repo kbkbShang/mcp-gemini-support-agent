@@ -123,6 +123,8 @@ You must:
 - Use get_kb_doc only to obtain additional context for answer generation.
 - Even when get_kb_doc is used, citations must come from search_kb results.
 - Citations must include the original doc_id, chunk_id, and quote from retrieved search_kb chunks.
+- Do not include a "Citations" section inside the answer.
+- Put citations only in the top-level citations array.
 - Do not create new citations from the full document content.
 - Do not output citations with an empty chunk_id.
 - Do not invent facts, procedures, or unsupported solutions.
@@ -152,6 +154,21 @@ Return only valid JSON with this exact shape:
 }
 """
 
+def extract_tool_calls(response) -> list[str]:
+    tool_calls = []
+
+    history = getattr(response, "automatic_function_calling_history", []) or []
+
+    for item in history:
+        parts = getattr(item, "parts", []) or []
+
+        for part in parts:
+            function_call = getattr(part, "function_call", None)
+
+            if function_call:
+                tool_calls.append(function_call.name)
+
+    return tool_calls
 
 def run_gemini_agent(query: str) -> dict:
     try:
@@ -164,6 +181,7 @@ def run_gemini_agent(query: str) -> dict:
             ),
         )
 
+        tool_calls = extract_tool_calls(response)
 
         text = response.text or ""
 
@@ -173,18 +191,30 @@ def run_gemini_agent(query: str) -> dict:
                 "citations": [],
                 "confidence": 0.0,
                 "next_actions": [],
-                "ticket_draft": {"created": False, "draft_id": None},
+                "ticket_draft": {
+                    "created": False,
+                    "draft_id": None,
+                },
             }
-        
+
         try:
-            #cleaned_text = clean_json_text(text)
-            #return json.loads(cleaned_text)
-            json_text = extract_json_text(text)
-            parsed_json = json.loads(json_text)
+            # First try parsing the full text directly.
+            # This works when Gemini returns pure JSON.
+            try:
+                parsed_json = json.loads(text.strip())
+
+            # If Gemini wraps JSON in markdown or extra text, extract JSON.
+            except json.JSONDecodeError:
+                json_text = extract_json_text(text)
+                parsed_json = json.loads(json_text)
 
             validated_response = AgentResponse.model_validate(parsed_json)
 
-            return validated_response.model_dump()
+            result = validated_response.model_dump()
+            result["tool_calls"] = extract_tool_calls(response)
+
+            return result
+
         except (json.JSONDecodeError, ValidationError) as e:
             return {
                 "answer": text,
@@ -204,6 +234,11 @@ def run_gemini_agent(query: str) -> dict:
             "answer": f"Agent failed to generate a response: {str(e)}",
             "citations": [],
             "confidence": 0.0,
-            "next_actions": ["Try again or create a support ticket manually."],
-            "ticket_draft": {"created": False, "draft_id": None},
+            "next_actions": [
+                "Try again or create a support ticket manually."
+            ],
+            "ticket_draft": {
+                "created": False,
+                "draft_id": None,
+            },
         }
