@@ -24,3 +24,14 @@ services:
       - tool-server
     volumes:
       - ./data:/app/data
+
+  ui:
+    build: .
+    container_name: enterprise-ui
+    command: streamlit run src/ui/app.py --server.address 0.0.0.0 --server.port 8501
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://agent-api:8000/chat
+    depends_on:
+      - agent-api
