@@ -94,13 +94,12 @@ flowchart LR
     Agent --> Gemini
 
     Gemini --> KB
+    KB --> Gemini
     Gemini --> DOC
+    DOC --> Gemini
     Gemini --> TICKET
+    TICKET --> Gemini
     Gemini --> DRAFT
-
-    Gemini <-- KB
-    Gemini <-- DOC
-    Gemini <-- TICKET
 
     KB --> Data
     DOC --> Data
