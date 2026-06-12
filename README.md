@@ -8,6 +8,16 @@
 
 The Streamlit UI allows users to submit support requests, view citation-grounded responses, inspect retrieved evidence, and review tool invocation details.
 
+### Live Cloud Deployment
+
+The application is deployed on Google Cloud Run as a multi-service architecture consisting of:
+
+- Streamlit UI
+- FastAPI Agent API
+- Tool Server
+
+Cloud Run provides automatic HTTPS endpoints, autoscaling, monitoring, and serverless deployment capabilities.
+
 ---
 
 ## Overview
@@ -22,12 +32,14 @@ The system demonstrates how LLM agents can be integrated into enterprise support
 
 ## Technical Highlights
 
-- Built an enterprise support agent using Gemini Function Calling and FastAPI
-- Implemented knowledge-base retrieval and historical ticket search workflows
-- Added automatic ticket draft generation for unresolved issues
-- Designed a structured JSON response schema using Pydantic
-- Developed an automated evaluation framework for tool-routing and citation validation
-- Containerized the multi-service architecture using Docker Compose
+- Built an enterprise AI support agent using Gemini Function Calling and FastAPI
+- Implemented knowledge-base retrieval, historical ticket search, and ticket draft generation workflows
+- Developed citation-grounded response generation with evidence retrieval
+- Designed structured JSON response schemas using Pydantic validation
+- Implemented structured logging for observability, including latency, tool usage, citation counts, and retry metrics
+- Developed an automated evaluation framework for tool routing, citation validation, and ticket workflow verification
+- Containerized the application using Docker and Docker Compose
+- Deployed a multi-service architecture on Google Cloud Run with autoscaling support
 
 ---
 
@@ -54,12 +66,14 @@ The system demonstrates how LLM agents can be integrated into enterprise support
 - Automatically creates support ticket drafts when evidence is insufficient
 - Prevents unsupported or hallucinated recommendations
 
-### Reliability & Validation
+### Reliability, Observability & Validation
 
 - Gemini Function Calling
 - Pydantic response validation
 - Automatic retry handling for API failures
 - Structured JSON outputs
+- Structured logging for monitoring and debugging
+- Latency and tool-usage tracking
 
 ### Evaluation Framework
 
@@ -104,6 +118,7 @@ flowchart LR
 
     Agent --> User
 ```
+
 The agent uses Gemini Function Calling to interact with a tool server that provides knowledge-base retrieval, historical ticket search, full document retrieval, and ticket draft creation capabilities.
 
 ---
@@ -155,6 +170,12 @@ The agent uses Gemini Function Calling to interact with a tool server that provi
 
 - Docker
 - Docker Compose
+- Google Cloud Run
+
+### Monitoring
+
+- Google Cloud Logging
+- Structured JSON Logs
 
 ### Testing
 
@@ -162,8 +183,42 @@ The agent uses Gemini Function Calling to interact with a tool server that provi
 
 ### Data Layer
 
+- ChromaDB
 - JSON Knowledge Base
 - Historical Ticket Store
+
+---
+
+## Cloud Deployment
+
+The system is deployed on Google Cloud Run using a containerized multi-service architecture.
+
+### Services
+
+| Service | Description |
+|----------|----------|
+| Streamlit UI | User-facing support interface |
+| Agent API | Gemini-powered orchestration layer |
+| Tool Server | Retrieval and ticketing tools |
+
+### Deployment Features
+
+- Docker-based deployment
+- Google Cloud Run serverless hosting
+- Automatic HTTPS endpoints
+- Autoscaling support
+- Cloud Logging integration
+- Service isolation across UI, API, and Tool layers
+
+### Autoscaling Configuration
+
+| Service | Min Instances | Max Instances |
+|----------|----------|----------|
+| UI | 0 | 2 |
+| Agent API | 0 | 3 |
+| Tool Server | 0 | 3 |
+
+Cloud Run automatically scales services based on incoming traffic while scaling to zero during idle periods to reduce cost.
 
 ---
 
@@ -171,27 +226,66 @@ The agent uses Gemini Function Calling to interact with a tool server that provi
 
 The project includes an automated evaluation framework for measuring agent behavior and workflow correctness.
 
-Evaluation dimensions include:
+### Evaluation Coverage
 
-- Tool routing accuracy
-- Citation generation
+- Knowledge-base retrieval
+- Historical ticket retrieval
 - Ticket draft creation
+- Citation generation
+- Tool routing behavior
 - API reliability
-- Retry handling
 
 ### Example Metrics
 
-| Metric | Value |
+| Metric | Result |
 |----------|----------|
 | Total Test Cases | 20 |
+| Logic Pass Rate | 100% |
 | Tool Validation | Supported |
 | Citation Validation | Supported |
 | Retry Handling | Supported |
 | Structured Output Validation | Supported |
 
+**Note:** Occasional failures may occur due to external Gemini API rate limits or temporary service availability issues. Automatic retry logic is implemented to improve reliability.
+
+---
+
+## Observability
+
+The system emits structured JSON logs for monitoring and debugging.
+
+Captured metrics include:
+
+- Query latency
+- Tool invocations
+- Citation count
+- Retry count
+- Ticket creation events
+- Confidence score
+
+Example log:
+
+```json
+{
+  "event": "agent_response",
+  "query": "VPN authentication failed",
+  "tool_calls": ["search_kb"],
+  "citation_count": 2,
+  "ticket_created": false,
+  "latency_ms": 1874,
+  "retry_count": 0,
+  "confidence": 0.85,
+  "model": "gemini-2.5-flash"
+}
+```
+
+When deployed to Cloud Run, logs are automatically collected and visualized through Google Cloud Logging.
+
 ---
 
 ## Running the Application
+
+### Local Development
 
 Build and start all services:
 
@@ -237,8 +331,25 @@ http://localhost:7001
 
 ## Future Improvements
 
+- Persistent ticket storage using Firestore or Cloud SQL
 - Multi-turn conversation memory
-- Cloud deployment (Cloud Run / ECS)
-- Vector database retrieval
-- LLM-based grounding evaluation
-- Integration with real ticketing systems
+- Retrieval strategy comparison and ranking evaluation
+- Integration with Jira or ServiceNow
+- Advanced monitoring dashboards and alerting
+- Custom domain and authentication support
+
+---
+
+## Project Objectives
+
+This project demonstrates:
+
+- Enterprise AI Agent design
+- Retrieval-Augmented Generation (RAG)
+- Function Calling orchestration
+- Citation-grounded response generation
+- Automated evaluation methodologies
+- Structured logging and observability
+- Docker containerization
+- Cloud-native deployment using Google Cloud Run
+- Autoscaling serverless architectures
