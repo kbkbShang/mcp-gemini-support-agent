@@ -142,7 +142,7 @@ def log_agent_response(query: str, result: dict):
         "model": metadata.get("model"),
     }
 
-    logger.info(json.dumps(structured_log, ensure_ascii=False))
+    logger.info(json.dumps(structured_log, ensure_ascii=True))
 
 SYSTEM_INSTRUCTION = """
 You are an enterprise IT support agent.
@@ -186,7 +186,7 @@ Ticket rules:
 - Never invent draft_id values.
 - If create_ticket_draft was not called, ticket_draft.created must be false and draft_id must be null.
 - For unresolved issues where a ticket draft is created, set confidence to 0.0 because no knowledge-base evidence was found.
-- If the agent says it can create a ticket draft for an unresolved issue, it must actually call create_ticket_draft and return the created draft_id.
+- If you suggest creating a ticket draft for an unresolved issue, you must actually call create_ticket_draft to create the draft ticket and return the created draft_id.
 
 Out-of-scope and special cases:
 
