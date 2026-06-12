@@ -4,5 +4,4 @@ __pycache__
 .env
 .venv
 agentenv
-data/chroma
 eval/report.json
