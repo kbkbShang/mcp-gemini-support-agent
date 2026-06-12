@@ -94,8 +94,7 @@ flowchart LR
 
     Agent --> Gemini
 
-    Gemini --> Tools
-    Tools --> Gemini
+    Gemini <--> Tools
 
     KB --> Data
     DOC --> Data
