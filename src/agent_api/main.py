@@ -19,6 +19,14 @@ class ChatRequest(BaseModel):
     query: str
     session_id: str | None = None
 
+@app.get("/")
+def root():
+    return {
+        "message": "Enterprise AI Support Agent is running",
+        "docs": "/docs",
+        "health": "/health"
+    }
+
 ## API Endpoints
 @app.get("/health")
 def health():

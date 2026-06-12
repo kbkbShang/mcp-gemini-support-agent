@@ -72,5 +72,14 @@
     ],
     "status": "draft",
     "created_at": "2026-06-11T22:41:20.525114+00:00"
+  },
+  {
+    "draft_id": "DRF-0008",
+    "title": "Broken office chair",
+    "description": "Broken office chair",
+    "priority": "medium",
+    "tags": [],
+    "status": "draft",
+    "created_at": "2026-06-12T05:06:09.707884+00:00"
   }
 ]
