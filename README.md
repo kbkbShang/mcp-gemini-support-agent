@@ -1,5 +1,15 @@
 # MCP Gemini Support Agent
 
+## Demo
+
+### Enterprise Support Agent UI
+
+![Agent UI](docs/agent_ui.png)
+
+The Streamlit UI allows users to submit support requests, view citation-grounded responses, inspect retrieved evidence, and review tool invocation details.
+
+---
+
 ## Overview
 
 Enterprise IT support teams handle large volumes of repetitive requests related to VPN access, authentication failures, software installation, permissions, and account management. Relevant information is often distributed across knowledge bases, internal documentation, and historical support tickets, making issue resolution time-consuming and inconsistent.
@@ -88,6 +98,10 @@ flowchart LR
     Gemini --> TICKET
     Gemini --> DRAFT
 
+    Gemini <-- KB
+    Gemini <-- DOC
+    Gemini <-- TICKET
+
     KB --> Data
     DOC --> Data
     TICKET --> Data
@@ -95,6 +109,7 @@ flowchart LR
     Gemini --> Agent
     Agent --> User
 ```
+The agent uses Gemini Function Calling to interact with a tool server that provides knowledge-base retrieval, historical ticket search, full document retrieval, and ticket draft creation capabilities.
 
 ---
 
@@ -121,6 +136,10 @@ flowchart LR
 ---
 
 ## Technology Stack
+
+### Frontend
+
+- Streamlit
 
 ### Backend
 
@@ -177,7 +196,7 @@ Evaluation dimensions include:
 
 ---
 
-## Docker Deployment
+## Running the Application
 
 Build and start all services:
 
@@ -185,13 +204,29 @@ Build and start all services:
 docker compose up --build
 ```
 
+### Streamlit UI
+
+Open:
+
+```text
+http://localhost:8501
+```
+
+The UI allows users to:
+
+- Submit support requests
+- View grounded responses
+- Inspect citations
+- Review confidence scores
+- View tool invocation details
+
 ### Agent API
 
 ```text
 http://localhost:8000
 ```
 
-### Swagger UI
+### Swagger API Documentation
 
 ```text
 http://localhost:8000/docs
