@@ -169,7 +169,7 @@ Evaluation dimensions include:
 
 | Metric | Value |
 |----------|----------|
-| Total Test Cases | 15 |
+| Total Test Cases | 20 |
 | Tool Validation | Supported |
 | Citation Validation | Supported |
 | Retry Handling | Supported |
