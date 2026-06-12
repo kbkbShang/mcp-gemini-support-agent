@@ -1,6 +1,7 @@
 import json
 import os
 import time
+import logging
 
 from dotenv import load_dotenv
 from google import genai
@@ -21,6 +22,9 @@ load_dotenv()
 MODEL_NAME = "gemini-2.5-flash"
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
+logger = logging.getLogger("agent")
+logging.basicConfig(level=logging.INFO)
 
 _last_retry_count = 0
 
@@ -122,6 +126,23 @@ def is_retryable_gemini_error(error: Exception) -> bool:
         or "currently experiencing high demand" in error_text
     )
 
+def log_agent_response(query: str, result: dict):
+    metadata = result.get("metadata", {})
+    ticket_draft = result.get("ticket_draft", {})
+
+    structured_log = {
+        "event": "agent_response",
+        "query": query,
+        "tool_calls": result.get("tool_calls", []),
+        "citation_count": metadata.get("citation_count", 0),
+        "ticket_created": ticket_draft.get("created", False),
+        "latency_ms": metadata.get("latency_ms", 0),
+        "retry_count": metadata.get("retry_count", 0),
+        "confidence": result.get("confidence", 0.0),
+        "model": metadata.get("model"),
+    }
+
+    logger.info(json.dumps(structured_log, ensure_ascii=False))
 
 SYSTEM_INSTRUCTION = """
 You are an enterprise IT support agent.
@@ -165,6 +186,7 @@ Ticket rules:
 - Never invent draft_id values.
 - If create_ticket_draft was not called, ticket_draft.created must be false and draft_id must be null.
 - For unresolved issues where a ticket draft is created, set confidence to 0.0 because no knowledge-base evidence was found.
+- If the agent says it can create a ticket draft for an unresolved issue, it must actually call create_ticket_draft and return the created draft_id.
 
 Out-of-scope and special cases:
 
@@ -315,11 +337,13 @@ def run_gemini_agent(query: str) -> dict:
         text = response.text or ""
 
         if not text.strip():
-            return build_fallback_response(
+            fallback = build_fallback_response(
                 answer="Gemini did not return a text response. It may have made a tool call but did not produce final JSON.",
                 start_time=start_time,
                 tool_calls=tool_calls,
             )
+            log_agent_response(query, fallback)
+            return fallback
 
         try:
             try:
@@ -338,10 +362,12 @@ def run_gemini_agent(query: str) -> dict:
                 result=result,
             )
 
+            log_agent_response(query, result)
+
             return result
 
         except (json.JSONDecodeError, ValidationError) as e:
-            return build_fallback_response(
+            fallback = build_fallback_response(
                 answer=text,
                 start_time=start_time,
                 tool_calls=tool_calls,
@@ -350,8 +376,11 @@ def run_gemini_agent(query: str) -> dict:
                 ],
             )
 
+            log_agent_response(query, fallback)
+            return fallback
+
     except Exception as e:
-        return build_fallback_response(
+        fallback = build_fallback_response(
             answer=f"Agent failed to generate a response: {str(e)}",
             start_time=start_time,
             tool_calls=tool_calls,
@@ -359,3 +388,5 @@ def run_gemini_agent(query: str) -> dict:
                 "Try again or create a support ticket manually."
             ],
         )
+        log_agent_response(query, fallback)
+        return fallback

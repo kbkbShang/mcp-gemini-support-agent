@@ -118,7 +118,7 @@
   "query": "Find similar resolved tickets and tell me how to fix VPN authentication failure",
   "expected_tools": ["search_tickets"],
   "optional_tools": ["search_kb"],
-  "should_have_citations": false,
+  "should_have_citations": true,
   "should_create_ticket": false
 },
 {
