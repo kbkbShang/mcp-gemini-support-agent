@@ -91,21 +91,17 @@ flowchart LR
     Data[(Knowledge Base & Ticket Store)]
 
     User --> Agent
+
     Agent --> Gemini
 
-    Gemini --> KB
-    KB --> Gemini
-    Gemini --> DOC
-    DOC --> Gemini
-    Gemini --> TICKET
-    TICKET --> Gemini
-    Gemini --> DRAFT
+    Gemini <--> Tools
 
     KB --> Data
     DOC --> Data
     TICKET --> Data
 
     Gemini --> Agent
+
     Agent --> User
 ```
 The agent uses Gemini Function Calling to interact with a tool server that provides knowledge-base retrieval, historical ticket search, full document retrieval, and ticket draft creation capabilities.
